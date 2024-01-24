@@ -1,0 +1,61 @@
+package ecommerce.controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ecommerce.dto.CustomerDTO;
+import ecommerce.dto.ProductOrderDTO;
+import ecommerce.entities.CustomerEntity;
+import ecommerce.entities.ProductOrderEntity;
+import ecommerce.services.CustomerService;
+
+@RestController
+@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080"})
+
+@RequestMapping("/ecommerce/customer")
+
+public class CustomerController {
+
+	@Autowired
+	private CustomerService customerService;
+
+	// GET
+	/*@GetMapping
+	public List<CustomerEntity>listCustomers() {
+		return customerService.getAllCustomers();
+	}*/
+	
+	@GetMapping
+    public List<CustomerDTO> listCustomers() {
+        List<CustomerEntity> customerEntity = customerService.getAllCustomers();
+
+        // Convertir entidades a DTOs
+        List<CustomerDTO> customerDTO = convertToDTOs(customerEntity);
+
+        return customerDTO;
+    }
+
+    // Método para convertir entidades a DTOs
+    private List<CustomerDTO> convertToDTOs(List<CustomerEntity> customerEntity) {
+        List<CustomerDTO> customerDTOarray = new ArrayList<>();
+        
+        for (CustomerEntity entity : customerEntity) {
+        	CustomerDTO dto = new CustomerDTO(
+                entity.getId_customer()
+            );
+
+            productOrderDTOs.add(dto);
+        }
+
+        return productOrderDTOs;
+    }
+	
+}
+
+

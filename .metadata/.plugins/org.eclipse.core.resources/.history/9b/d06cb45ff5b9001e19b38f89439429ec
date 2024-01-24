@@ -1,0 +1,22 @@
+package ecommerce.dto;
+
+import java.util.List;
+
+public class CustomerDTO {
+    private Long idCustomer;
+    private String firstName;
+    private String lastName;
+    private String identifyDocument;
+    private String email;
+    private Long phone;
+    private String address;
+    private String city;
+    private String state;
+    private Integer zipCode;
+    private String country;
+    private String registrationDate;
+    private String paymentInfo;
+    private String accountStatus;
+    private String username;
+    private String password;
+    private List<Long> orderList;
