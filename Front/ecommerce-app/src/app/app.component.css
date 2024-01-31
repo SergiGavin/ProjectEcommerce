@@ -7,10 +7,10 @@ body {
 }
 
 header {
+    display: flex;
     background-color:#F0BA6A;
     color: #ffffff;
     padding: 10px;
-    text-align: center;
 }
 
 nav {
@@ -33,7 +33,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #f3cc78;
+    background-color: #eb9b9b;
     color: black;
 }
 
@@ -51,6 +51,38 @@ footer {
     width: 100%;
 }
 .logo{
-width:25vw ;
-height:12vh ;
+    width:25vw;
+    height:12vh;
+}
+.buscador{
+    width: 30vw;
+    height: 2vh;
+    align-self: center;
+    margin-left: 10vw;
+}
+.inicio_sesion{
+    width: 10vw;
+    height: 5vh;
+    align-self: center;
+    margin-left: 18vw;
+}
+.section_banner{
+    display: flex;
+    justify-content: center;
+}
+.banner{
+    width: 60vw;
+    height: 20vh;
+}
+.flecha_izquierda{
+    width: 4vw;
+    height: 2vh;
+    align-self: center;
+    cursor: pointer;
+}
+.flecha_derecha{
+    width: 4vw;
+    height: 2vh;
+    align-self: center;
+    cursor: pointer;
 }

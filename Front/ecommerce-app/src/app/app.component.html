@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ecommerce</title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
         <header>
             <img class="logo" src="../assets/logo2.png" alt="logo">
+            <input class="buscador">
+            <button class="inicio_sesion">Iniciar Sesión</button>
         </header>
     <nav>
-        <a href="inicio">Inicio</a>
-        <a href="nuevos">Nuevos</a>
-        <a href="ofertas">Ofertas</a>
-        <a href="mas_vendidos">Más vendidos</a>
-        <a href="atencion_cliente">Atención al cliente</a>
-        <a href="cesta">Tu cesta</a>
+        <a href="#">Inicio</a>
+        <a href="#">Nuevos</a>
+        <a href="#">Ofertas</a>
+        <a href="#">Más vendidos</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Tu cesta</a>
     </nav>
-
-    <section>
-        <h2>Productos Inicio</h2>
+    <section class="section_banner">
+        <img (click)="changeBanner('anterior')" class="flecha_izquierda" src="../assets/flecha_izquierda.png" alt="flecha_izquierda">
+        <img class="banner" [src]="bannerImages[currentBannerIndex]" alt="banner">
+        <img (click)="changeBanner('siguiente')" class="flecha_derecha" src="../assets/flecha_derecha.png" alt="flecha_derecha">
     </section>
-
     <footer>
         <p>&copy; 2024 Ecommerce. Todos los derechos reservados.</p>
     </footer>
     </body>
 </html>
+
