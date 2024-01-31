@@ -3,6 +3,9 @@ package ecommerce.entities;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +19,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "Customer")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_customer")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_customer")
 @Data
 public class CustomerEntity {
 	@Id
@@ -30,7 +33,7 @@ public class CustomerEntity {
 	private int phone;
 	private String address;
 	private String city;
-	private String state;
+	private String province;
 	private int zip_code;
 	private String country;
 	private Date registration_date;
@@ -39,7 +42,7 @@ public class CustomerEntity {
 	private String username;
 	private String password;
 	
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="purchase_id_customer")
     private List<PurchaseOrderEntity> orderList; 
 	
 	
@@ -48,7 +51,7 @@ public class CustomerEntity {
 	
 	
 	public CustomerEntity(String first_name, String last_name, String identify_document, String email, int phone,
-			String address, String city, String state, int zip_code, String country, Date registration_date,
+			String address, String city, String province, int zip_code, String country, Date registration_date,
 			String payment_info, String account_status, String username, String password) {
 		super();
 		this.first_name = first_name;
@@ -58,7 +61,7 @@ public class CustomerEntity {
 		this.phone = phone;
 		this.address = address;
 		this.city = city;
-		this.state = state;
+		this.province = province;
 		this.zip_code = zip_code;
 		this.country = country;
 		this.registration_date = registration_date;

@@ -12,7 +12,7 @@ import ecommerce.entities.PurchaseOrderEntity;
 import ecommerce.services.PurchaseOrderService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://127.0.0.1:4200", "http://localhost:8080"})
 
 @RequestMapping("/ecommerce/purchaseorder")
 public class PurchaseOrderController {

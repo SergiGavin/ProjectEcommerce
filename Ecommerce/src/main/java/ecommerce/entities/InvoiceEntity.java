@@ -3,6 +3,10 @@ package ecommerce.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +19,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "Invoice")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_invoice")
 @Data
 public class InvoiceEntity {
 	@Id
@@ -32,7 +37,8 @@ public class InvoiceEntity {
     private String invoice_notes;
     
     @ManyToOne
-    @JoinColumn(name = "id_order")
+    @JoinColumn(name = "purchase_order_id_order")
+    @JsonIgnoreProperties({"order_date","order_status","payment_method","total_order_amount","customer_notes","estimated_delivery_date","shipping_date","deliveryNoteList","invoiceList"})
     private PurchaseOrderEntity purchase_order_invoice;
   
     

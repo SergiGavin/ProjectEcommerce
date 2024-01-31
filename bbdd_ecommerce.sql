@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `phone` INT(15) NOT NULL,
   `address` VARCHAR(65) NOT NULL,
   `city` VARCHAR(45) NOT NULL,
-  `state` VARCHAR(45) NOT NULL,
+  `province` VARCHAR(45) NOT NULL,
   `zip_code` INT NOT NULL,
   `country` VARCHAR(45) NOT NULL,
   `registration_date` DATE NOT NULL,
@@ -53,7 +53,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `product` (
   `id_product` BIGINT NOT NULL AUTO_INCREMENT,
   `product_name` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(100) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `stock_quantity` INT NOT NULL,
   `category` VARCHAR(45) NOT NULL,
@@ -107,11 +107,10 @@ CREATE TABLE IF NOT EXISTS `delivery_note` (
   `delivery_status` VARCHAR(45) NULL,
   `delivery_notes` VARCHAR(45) NULL,
   `purchase_order_id_order` BIGINT NOT NULL,
-  `purchase_order_customer_id_customer` BIGINT NOT NULL,
-  PRIMARY KEY (`id_deliverynote`, `purchase_order_id_order`, `purchase_order_customer_id_customer`),
+  PRIMARY KEY (`id_deliverynote`, `purchase_order_id_order`),
   CONSTRAINT `fk_deliverynote_order1`
-	  FOREIGN KEY (`purchase_order_id_order` , `purchase_order_customer_id_customer`)
-	  REFERENCES `purchase_order` (`id_order` , `purchase_id_customer`)
+	  FOREIGN KEY (`purchase_order_id_order`)
+	  REFERENCES `purchase_order` (`id_order`)
 	  ON DELETE NO ACTION
 	  ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -132,11 +131,10 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `payment_status` VARCHAR(45) NULL,
   `invoice_notes` VARCHAR(45) NULL,
   `purchase_order_id_order` BIGINT NOT NULL,
-  `purchase_order_customer_id_customer` BIGINT NOT NULL,
-  PRIMARY KEY (`id_invoice`, `purchase_order_id_order`, `purchase_order_customer_id_customer`),
+  PRIMARY KEY (`id_invoice`, `purchase_order_id_order`),
   CONSTRAINT `fk_invoice_order1`
-	  FOREIGN KEY (`purchase_order_id_order` , `purchase_order_customer_id_customer`)
-	  REFERENCES `purchase_order` (`id_order` , `purchase_id_customer`)
+	  FOREIGN KEY (`purchase_order_id_order`)
+	  REFERENCES `purchase_order` (`id_order`)
 	  ON DELETE NO ACTION
 	  ON UPDATE NO ACTION)
 
@@ -167,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `product_has_order` (
 -- DATOS EJEMPLO:
 
 -- Insertar datos de ejemplo en la tabla Customer
-INSERT INTO customer (id_customer, first_name, last_name, identify_document, email, phone, address, city, state, zip_code, country, registration_date, payment_info, account_status, username, password)
+INSERT INTO customer (id_customer, first_name, last_name, identify_document, email, phone, address, city, province, zip_code, country, registration_date, payment_info, account_status, username, password)
 VALUES
-(1, 'CustomerA', 'CustomerA1','11223344K', 'john.doe@example.com', '123456789', '123 Main St', 'Cityville', 'Stateville', 12345, 'Countryland', '2023-01-01', 'Credit Card', 'Active', 'john_doe', 'password123'),
+(1, 'Sergi', 'Gavin','11223344K', 'sergi.gs@hotmail.es', '123456789', 'Carrer Batllevell 80', 'Sabadell', 'Barcelona', 08208, 'España', '2023-01-01', 'Credit Card', 'Active', 'Sergi', 'Sergi123'),
 (2, 'CustomerB', 'CustomerB1','22334455L', 'jane.smith@example.com', '987654321', '456 Oak St', 'Townsville', 'Stateville', 67890, 'Countryland', '2023-01-02', 'PayPal', 'Active', 'jane_smith', 'password456'),
 (3, 'CustomerC', 'CustomerC1','66778899S', 'alice.j@example.com', '555666777', '789 Elm St', 'Villagetown', 'Stateville', 54321, 'Countryland', '2023-01-03', 'Bank Transfer', 'Active', 'alice_j', 'password789');
 
@@ -193,28 +191,29 @@ INSERT INTO purchase_order (id_order, order_date, order_status, payment_method, 
 VALUES
 (1, '2023-02-01', 'Processing', 'Credit Card', 149.95, 'Special instructions for Order 1', '2023-02-10', '2023-02-05', 1),
 (2, '2023-02-02', 'Shipped', 'PayPal', 79.98, 'Special instructions for Order 2', '2023-02-15', '2023-02-08', 2),
-(3, '2023-02-03', 'Processing', 'Bank Transfer', 129.99, 'Special instructions for Order 3', '2023-02-12', '2023-02-06', 3);
+(3, '2023-02-03', 'Processing', 'Bank Transfer', 129.99, 'Special instructions for Order 3', '2023-02-12', '2023-02-06', 3),
+(4, '2023-02-03', 'Processing', 'Bank Transfer', 129.99, 'Special instructions for Order 3', '2023-02-12', '2023-02-06', 1);
 
 -- Insertar datos de ejemplo en la tabla DeliveryNote
-INSERT INTO delivery_note (id_deliverynote, dispatch_date, shipping_details, receiver_signature, delivery_status, delivery_notes, Purchase_order_id_order, purchase_order_customer_id_customer)
+INSERT INTO delivery_note (id_deliverynote, dispatch_date, shipping_details, receiver_signature, delivery_status, delivery_notes, Purchase_order_id_order)
 VALUES
-(1, '2023-02-05', 'Shipped via Express Shipping', 'John Doe', 'Delivered', 'Delivery notes for Order 1', 1, 1),
-(2, '2023-02-08', 'Shipped via Standard Shipping', 'Jane Smith', 'In Transit', 'Delivery notes for Order 2', 2, 2),
-(3, '2023-02-10', 'Shipped via Priority Shipping', 'Alice Johnson', 'In Transit', 'Delivery notes for Order 3', 3, 3);
+(1, '2023-02-05', 'Shipped via Express Shipping', 'John Doe', 'Delivered', 'Delivery notes for Order 1', 1),
+(2, '2023-02-08', 'Shipped via Standard Shipping', 'Jane Smith', 'In Transit', 'Delivery notes for Order 2', 2),
+(3, '2023-02-10', 'Shipped via Priority Shipping', 'Alice Johnson', 'In Transit', 'Delivery notes for Order 3', 3);
 
 
 -- Insertar datos de ejemplo en la tabla Invoice
-INSERT INTO invoice (id_invoice, invoice_date, due_date, shipping_details, subtotal, taxes, discounts, total_invoice_amount, payment_status, invoice_notes, purchase_order_id_order, purchase_order_customer_id_customer)
+INSERT INTO invoice (id_invoice, invoice_date, due_date, shipping_details, subtotal, taxes, discounts, total_invoice_amount, payment_status, invoice_notes, purchase_order_id_order)
 VALUES
-(1, '2023-02-05', '2023-02-15', 'Shipped via Express Shipping', '149.95', '15.00', '7.50', '157.45', 'Paid', 'Invoice notes for Order 1', 1, 1),
-(2, '2023-02-08', '2023-02-18', 'Shipped via Standard Shipping', '79.98', '8.00', '4.00', '83.98', 'Pending', 'Invoice notes for Order 2', 2, 2),
-(3, '2023-02-10', '2023-02-20', 'Shipped via Priority Shipping', '129.99', '13.00', '6.50', '136.49', 'Pending', 'Invoice notes for Order 3', 3, 3);
+(1, '2023-02-05', '2023-02-15', 'Shipped via Express Shipping', '149.95', '15.00', '7.50', '157.45', 'Paid', 'Invoice notes for Order 1', 1),
+(2, '2023-02-08', '2023-02-18', 'Shipped via Standard Shipping', '79.98', '8.00', '4.00', '83.98', 'Pending', 'Invoice notes for Order 2', 2),
+(3, '2023-02-10', '2023-02-20', 'Shipped via Priority Shipping', '129.99', '13.00', '6.50', '136.49', 'Pending', 'Invoice notes for Order 3', 3);
 
 -- Insertar datos de ejemplo en la tabla Product_has_Order
 INSERT INTO product_has_order (id_product_has_order,product_id_product, purchase_order_id_order)
 VALUES
 (1, 1, 1),
-(2, 2, 2),
+(2, 1, 2),
 (3, 3, 3);
 
 

@@ -19,7 +19,6 @@ INDEX VERSION 1.134+D:\PROYECTOS\ECommerce\.metadata\.plugins\org.eclipse.jdt.co
 1580315635.index
 1602259191.index
 4058908818.index
-175139432.index
 3011209426.index
 879000869.index
 1997333835.index

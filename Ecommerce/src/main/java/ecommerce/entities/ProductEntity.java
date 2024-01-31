@@ -43,7 +43,7 @@ public class ProductEntity {
 	private List<ProductOrderEntity> productOrders;
 	
 	@ManyToOne
-    @JoinColumn(name = "id_supplier")
+    @JoinColumn(name = "supplier_id_supplier")
     private SupplierEntity supplier;
 	
 	

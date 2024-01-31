@@ -15,7 +15,7 @@ import ecommerce.entities.PurchaseOrderEntity;
 import ecommerce.services.CustomerService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://127.0.0.1:4200", "http://localhost:8080"})
 
 @RequestMapping("/ecommerce/customer")
 
@@ -25,10 +25,6 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	// GET
-	/*@GetMapping
-	public List<CustomerEntity>listCustomers() {
-		return customerService.getAllCustomers();
-	}*/
 	 @GetMapping
 	    public List<CustomerDTO> listCustomers() {
 	        List<CustomerEntity> customerEntities = customerService.getAllCustomers();
@@ -51,7 +47,7 @@ public class CustomerController {
 		            entity.getPhone(),
 		            entity.getAddress(),
 		            entity.getCity(),
-		            entity.getState(),
+		            entity.getProvince(),
 		            entity.getZip_code(),
 		            entity.getCountry(),
 		            entity.getRegistration_date(),
@@ -70,7 +66,6 @@ public class CustomerController {
 
 		private List<Long> convertToOrderIds(List<PurchaseOrderEntity> orderEntities) {
 		    List<Long> orderIds = new ArrayList<>();
-		    //NO SE AÑADE NADA
 		    for (PurchaseOrderEntity orderEntity : orderEntities) {
 		        orderIds.add(orderEntity.getId_order());
 		    }

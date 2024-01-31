@@ -2,9 +2,9 @@ package ecommerce.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,13 +38,17 @@ public class PurchaseOrderEntity {
   
     
     @ManyToOne
-    @JoinColumn(name = "id_customer")
-    private CustomerEntity customer;
+    @JoinColumn(name = "purchase_id_customer")
+    //Agregamos aqui los elementos que no queremos que se muestren(todos menos el id)
+    @JsonIgnoreProperties({"first_name","last_name","identify_document","email","phone","address","city","state","zip_code","country","registration_date","payment_info","account_status","username","password","orderList"}) 
+    private CustomerEntity purchase_id_customer;
     
     @OneToMany(mappedBy="purchase_order_delivery")
+    @JsonIgnoreProperties({"dispatch_date","shipping_details","receiver_signature","delivery_status","delivery_notes","purchase_order_delivery"})
     private List<DeliveryNoteEntity> deliveryNoteList; 
     
     @OneToMany(mappedBy="purchase_order_invoice")
+    @JsonIgnoreProperties({"invoice_date","due_date","shipping_details","subtotal","taxes","discounts","total_invoice_amount","payment_status","invoice_notes","purchase_order_invoice"})
     private List<InvoiceEntity> invoiceList; 
 
     
@@ -52,7 +56,7 @@ public class PurchaseOrderEntity {
     
 	public PurchaseOrderEntity(Date order_date, String order_status, String payment_method,
 			BigDecimal total_order_amount, String customer_notes, Date estimated_delivery_date, Date shipping_date,
-			CustomerEntity customer) {
+			CustomerEntity purchase_id_customer) {
 		super();
 		this.order_date = order_date;
 		this.order_status = order_status;
@@ -61,7 +65,7 @@ public class PurchaseOrderEntity {
 		this.customer_notes = customer_notes;
 		this.estimated_delivery_date = estimated_delivery_date;
 		this.shipping_date = shipping_date;
-		this.customer = customer;
+		this.purchase_id_customer = purchase_id_customer;
 	}
     
     

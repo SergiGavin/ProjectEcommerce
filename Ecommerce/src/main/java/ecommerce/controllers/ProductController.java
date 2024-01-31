@@ -1,5 +1,6 @@
 package ecommerce.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,21 +9,63 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ecommerce.dto.ProductDTO;
 import ecommerce.entities.ProductEntity;
+import ecommerce.entities.ProductOrderEntity;
 import ecommerce.services.ProductService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://127.0.0.1:4200", "http://localhost:8080"})
 
 @RequestMapping("/ecommerce/product")
 public class ProductController {
 
-	@Autowired
-	private ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-	// GET
-	@GetMapping
-	public List<ProductEntity>listProducts() {
-		return productService.getAllProduct();
-	}
+    @GetMapping
+    public List<ProductDTO> listProduct() {
+        List<ProductEntity> productEntities = productService.getAllProduct();
+        return convertToDTOs(productEntities);
+    }
+
+    private List<ProductDTO> convertToDTOs(List<ProductEntity> productEntities) {
+        List<ProductDTO> productDTOs = new ArrayList<>();
+
+        for (ProductEntity entity : productEntities) {
+            List<Long> orderIds = convertToOrderIds(entity.getProductOrders());
+
+            ProductDTO dto = new ProductDTO(
+                entity.getId_product(),
+                entity.getProduct_name(),
+                entity.getDescription(),
+                entity.getPrice(),
+                entity.getStock_quantity(),
+                entity.getCategory(),
+                entity.getCreation_date(),
+                entity.getUpdate_date(),
+                entity.getDiscount(),
+                entity.getTaxes(),
+                entity.getProduct_image(),
+                entity.getAvailability(),
+                entity.getTechnical_specifications(),
+                orderIds
+            );
+
+            productDTOs.add(dto);
+        }
+
+        return productDTOs;
+    }
+
+    private List<Long> convertToOrderIds(List<ProductOrderEntity> productOrderEntities) {
+        List<Long> orderIds = new ArrayList<>();
+        for (ProductOrderEntity productOrderEntity : productOrderEntities) {
+            Long orderId = productOrderEntity.getPurchase_order().getId_order();
+            orderIds.add(orderId);
+        }
+
+        System.out.println("El array tiene: " + orderIds);
+        return orderIds;
+    }
 }
