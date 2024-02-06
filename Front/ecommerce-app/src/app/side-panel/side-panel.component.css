@@ -1,0 +1,32 @@
+.sidePanel {
+    position: fixed;
+    width: 50vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    left: 40vw; 
+    top:0; 
+    z-index: 1000;
+}
+
+.sidePanel button{
+    display: flex;
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 3vw;
+    margin: 1vh 3vw 0vw 1vh;
+}
+.sidePanel a {
+    display: block;
+    margin-bottom: 10px;
+    margin-left: 15vw;
+}
+.panel_category{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente */
+    height: 50vh;
+}
+
+    

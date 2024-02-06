@@ -10,18 +10,25 @@
             <button class="inicio_sesion">Iniciar Sesión</button>
         </header>
     <nav>
+        <button class="selector" (click)="toggleSidenav()">Mostrar Categorías</button>
+        @if (showSidenav) {
+            <app-side-panel (closePanelEvent)="closePanel()"></app-side-panel>
+        }
         <a href="#">Inicio</a>
         <a href="#">Nuevos</a>
         <a href="#">Ofertas</a>
         <a href="#">Más vendidos</a>
         <a href="#">Atención al cliente</a>
         <a href="#">Tu cesta</a>
+        
     </nav>
-    <section class="section_banner">
-        <img (click)="changeBanner('anterior')" class="flecha_izquierda" src="../assets/flecha_izquierda.png" alt="flecha_izquierda">
-        <img class="banner" [src]="bannerImages[currentBannerIndex]" alt="banner">
-        <img (click)="changeBanner('siguiente')" class="flecha_derecha" src="../assets/flecha_derecha.png" alt="flecha_derecha">
-    </section>
+    <router-outlet></router-outlet>
+    <!--
+        <app-product></app-product>
+        <app-product-item></app-product-item>
+        
+    -->
+        
     <footer>
         <p>&copy; 2024 Ecommerce. Todos los derechos reservados.</p>
     </footer>

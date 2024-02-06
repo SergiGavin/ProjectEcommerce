@@ -1,0 +1,26 @@
+<!---->
+@if (product) {
+    <div class="product-info">
+        <h2 class="p-item-name">{{ product.product_name }}</h2>
+        <div class="p-item-image-container">
+            <img class="p-item-image" src="{{ product.product_image }}" alt="{{ product.product_name }}">
+        </div>
+        <p class="p-item-desc"><strong>Descripción:</strong> {{ product.description }}</p>
+        <p class="p-item-price"><strong>Precio:</strong> {{ product.price }}€</p>
+        <p class="p-item-category"><strong>Categoria:</strong> {{ product.category }}</p>
+        <p class="p-item-discount"><strong>Descuento:</strong> {{ product.discount * 100 }}%</p>
+        <p class="p-item-taxes"><strong>Impuestos:</strong> {{ product.taxes * 100 }}%</p>
+        @if (product.availability) {
+            <p class="p-item-availability"><strong>Disponibilidad:</strong> Disponible </p>
+        }@else if (!product.availability) {
+            <p class="p-item-availability"><strong>Disponibilidad:</strong> Próximamente </p>
+        }
+        <h3 (click)="toggleTechDetails()" class="p-item-techtitle"><strong>Especificaciones técnicas {{flecha}} </strong></h3>
+        @if (showTechDetails) {
+            <pre class="p-item-tech">{{ product.technical_specifications }}</pre>
+        }
+        
+    </div>
+}@else if (!product) {
+    <p>El producto no existe. Para más información contacte con el soporte.</p>
+}

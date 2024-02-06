@@ -1,0 +1,46 @@
+.product-info {
+    max-width: 80vw;
+    margin: 5vh auto;
+    padding: 5vh;
+    border: 1px solid #ddd;
+    border-radius: 2vh;
+    box-shadow: 0 0 2vh rgba(0, 0, 0, 0.1);
+}
+
+.p-item-name {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    text-align: center;
+}
+
+.p-item-image-container {
+    text-align: center; /* Centra la imagen */
+}
+
+.p-item-image {
+    width: 20vw;
+    height: 30vh;
+    margin-bottom: 2vh;
+}
+
+.p-item-desc,
+.p-item-price,
+.p-item-stock,
+.p-item-category,
+.p-item-dateC,
+.p-item-discount,
+.p-item-taxes,
+.p-item-availability,
+.p-item-techtitle {
+    margin-bottom: 2vh;
+}
+
+.p-item-tech {
+    white-space: pre-wrap;
+}
+.rotate {
+    transform: rotate(180deg);
+}
+h3{
+    width: 20vw;
+}
