@@ -1,18 +1,28 @@
-<section class="section_banner">
-    <img (click)="changeBanner('anterior')" class="flecha_izquierda" src="../assets/flecha_izquierda.png" alt="flecha_izquierda">
-    <img class="banner" [src]="bannerImages[currentBannerIndex]" alt="banner">
-    <img (click)="changeBanner('siguiente')" class="flecha_derecha" src="../assets/flecha_derecha.png" alt="flecha_derecha">
-</section>
+@if (mostrarBanner) {
+    <section class="section_banner">
+        <img (click)="changeBanner('anterior')" class="flecha_izquierda" src="../assets/flecha_izquierda.png" alt="flecha_izquierda">
+        <img class="banner" [src]="bannerImages[currentBannerIndex]" alt="banner">
+        <img (click)="changeBanner('siguiente')" class="flecha_derecha" src="../assets/flecha_derecha.png" alt="flecha_derecha">
+    </section>
+}
 <div class="row">
     @for (item of product; track item.id_product) {
     <div class="col-4">
         <div class="product-container">
-            <p class="p-product-name">{{ item.product_name }}</p>
+            @if (rutaOfertas()) {
+                <p class="product-info">
+                    <span class="p-product-name">{{ item.product_name }}</span>
+                    <span class="p-product-discount">{{item.discount*100}}%</span>
+                </p>
+            }@else {
+                <p class="p-product-name">{{ item.product_name }}</p>  
+            }
             <div class="p-product-image-container">
                 <a [routerLink]="['detalle-producto', item.id_product]">
                 <img class="p-product-image" src="{{ item.product_image }}" alt="{{ item.product_name }}">
                 </a>
             </div>
+                <p class="p-product-price">{{ item.price }}€</p> 
         </div>
     </div>
     }

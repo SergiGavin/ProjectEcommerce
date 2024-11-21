@@ -1,11 +1,8 @@
 import { Component, Input, OnInit, inject} from '@angular/core';
-import { ProductService } from '../services/product.service';
-import { Observable } from 'rxjs';
 import { Product} from '../model/product.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-import { ProductItemComponent } from '../product-item/product-item.component';
+import { RouterModule, Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +18,19 @@ export class ProductComponent implements OnInit {
   product: Product[]=[];
 
   ngOnInit(): void {
-      this.fetchProduct()
+    this.fetchProductBasedOnRoute();
+  }
+
+  //Fetch dependiendo de la ruta.
+  fetchProductBasedOnRoute() {
+    const rutaActual = this.router.url;
+    if (rutaActual === '/') {
+      this.fetchProduct();
+    } else if (rutaActual === '/nuevos') {
+      this.fetchProductNuevos();
+    } else if(rutaActual === '/ofertas'){
+      this.fetchProductOfertas();
+    }
   }
 
   //Para recibir todos los productos.
@@ -30,9 +39,41 @@ export class ProductComponent implements OnInit {
     .subscribe((product:any)=>{
       console.log(product);
       this.product = product.slice(0,6);
-
     });
   }
+  //Para recibir los productos nuevos
+  fetchProductNuevos(){
+    this.httpClient.get('http://localhost:8080/ecommerce/product/nuevos')
+    .subscribe((product:any)=>{
+      console.log(product);
+      this.product = product.slice(0,6);
+    });
+  }
+  fetchProductOfertas(){
+    this.httpClient.get('http://localhost:8080/ecommerce/product/ofertas')
+    .subscribe((product:any)=>{
+      console.log(product);
+      this.product = product.slice(0,6);
+    });
+  }
+
+
+  constructor(private router: Router) {
+    this.rutaInicio();
+  }
+
+  rutaInicio(){
+    const rutaActual = this.router.url;
+    this.mostrarBanner = (rutaActual === '/');
+  }
+  rutaOfertas(): boolean {
+    return this.router.url === '/ofertas'
+  }
+  rutaNuevos(): boolean {
+    return this.router.url === '/nuevos'
+  }
+
+  mostrarBanner: boolean = false;
   
   currentBannerIndex: number = 0;
   bannerImages: string[] = [
@@ -40,6 +81,8 @@ export class ProductComponent implements OnInit {
     '../assets/banner2.png',
     '../assets/banner3.png'
   ];
+  
+
     changeBanner(direction: string): void {
       console.log('Cambiando banner', direction)
       console.log('Índice actual:', this.currentBannerIndex);

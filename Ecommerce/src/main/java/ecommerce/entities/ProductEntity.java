@@ -1,5 +1,6 @@
 package ecommerce.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +32,8 @@ public class ProductEntity {
 	private double price;
 	private int stock_quantity;
 	private String category;
-	private Date creation_date;
+	@Column(name = "creation_date")
+	private Date creationDate;
 	private Date update_date;
 	private double discount;
 	private double taxes;
@@ -47,7 +49,6 @@ public class ProductEntity {
     private SupplierEntity supplier;
 	
 	
-	
 	public ProductEntity() {}
 	
 	public ProductEntity(String product_name, String description, double price, int stock_quantity, String category,
@@ -59,7 +60,7 @@ public class ProductEntity {
 		this.price = price;
 		this.stock_quantity = stock_quantity;
 		this.category = category;
-		this.creation_date = creation_date;
+		this.creationDate = creation_date;
 		this.update_date = update_date;
 		this.discount = discount;
 		this.taxes = taxes;
@@ -68,6 +69,7 @@ public class ProductEntity {
 		this.technical_specifications = technical_specifications;
 		this.supplier = supplier;
 	}
+	 
 	
 	
 }

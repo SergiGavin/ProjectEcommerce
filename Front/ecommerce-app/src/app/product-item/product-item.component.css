@@ -14,13 +14,19 @@
 }
 
 .p-item-image-container {
-    text-align: center; /* Centra la imagen */
+    text-align: center;
 }
 
 .p-item-image {
-    width: 20vw;
     height: 30vh;
     margin-bottom: 2vh;
+    object-fit: cover; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease; 
+}
+.p-item-image:hover {
+    transform: scale(1.75);
 }
 
 .p-item-desc,
@@ -43,4 +49,15 @@
 }
 h3{
     width: 20vw;
+}
+
+.p-item-availability-stock{
+    color: rgb(13, 175, 13);
+    text-decoration: none; 
+    cursor: pointer;
+
+}
+.p-item-availability-nostock{
+    color: rgb(247, 115, 115);
+    text-decoration: none; 
 }

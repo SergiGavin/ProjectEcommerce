@@ -11,9 +11,9 @@
         <p class="p-item-discount"><strong>Descuento:</strong> {{ product.discount * 100 }}%</p>
         <p class="p-item-taxes"><strong>Impuestos:</strong> {{ product.taxes * 100 }}%</p>
         @if (product.availability) {
-            <p class="p-item-availability"><strong>Disponibilidad:</strong> Disponible </p>
+            <p class="p-item-availability"><strong>Disponibilidad:</strong><a class="p-item-availability-stock"> En Stock</a> </p>
         }@else if (!product.availability) {
-            <p class="p-item-availability"><strong>Disponibilidad:</strong> Próximamente </p>
+            <p class="p-item-availability"><strong>Disponibilidad:</strong> <a class="p-item-availability-nostock"> Sin Stock </a> </p>
         }
         <h3 (click)="toggleTechDetails()" class="p-item-techtitle"><strong>Especificaciones técnicas {{flecha}} </strong></h3>
         @if (showTechDetails) {

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import ecommerce.entities.ProductOrderEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 @Data
@@ -15,7 +16,8 @@ public class ProductDTO {
 	private double price;
 	private int stock_quantity;
 	private String category;
-	private Date creation_date;
+	@Column(name = "creation_date")
+	private Date creationDate;
 	private Date update_date;
 	private double discount;
 	private double taxes;
@@ -36,7 +38,7 @@ public class ProductDTO {
 		this.price = price;
 		this.stock_quantity = stock_quantity;
 		this.category = category;
-		this.creation_date = creation_date;
+		this.creationDate = creation_date;
 		this.update_date = update_date;
 		this.discount = discount;
 		this.taxes = taxes;

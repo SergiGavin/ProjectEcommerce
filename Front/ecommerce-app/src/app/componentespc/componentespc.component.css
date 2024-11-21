@@ -1,0 +1,36 @@
+.graficas-component-container,
+.placabase-component-container,
+.discosduros-component-container,
+.ssd-component-container,
+.ram-component-container,
+.refrigeracion-component-container,
+.tarjeta_sonido-component-container,
+.ventilador_suple-component-container,
+.fuente_alimentacion-component-container,
+.ventilador_cpu-component-container {
+    text-align: center;
+    margin-bottom: 20px; /* Espacio entre las imágenes */
+}
+
+.graficas-component-container img,
+.placabase-component-container img,
+.discosduros-component-container img,
+.ssd-component-container img,
+.ram-component-container img,
+.refrigeracion-component-container img,
+.tarjeta_sonido-component-container img,
+.ventilador_suple-component-container img,
+.fuente_alimentacion-component-container img,
+.ventilador_cpu-component-container img{
+
+    height: 20vh; 
+}
+a{
+    text-decoration: none; 
+    color: black;
+}
+.row{
+    margin-top: 8vh;
+    margin-bottom: 10vh;
+    margin-right: 0px;
+}

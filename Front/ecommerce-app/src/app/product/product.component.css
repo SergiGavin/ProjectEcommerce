@@ -9,9 +9,11 @@
     padding: 10px;
     margin-bottom: 20px;
     background-color: white;
+    height: 40vh;
 }
 
 .p-product-name {
+    flex-grow: 1;
     text-align: center;
 }
 
@@ -26,7 +28,6 @@
 }
 
 .p-product-image {
-    width: 20vw;
     height: 30vh;
 }
 .section_banner{
@@ -37,7 +38,6 @@
     width: 60vw;
     height: 20vh;
     margin-bottom: 2vh;
-    margin-top: 2vh;
 }
 .flecha_izquierda{
     width: 4vw;
@@ -50,4 +50,19 @@
     height: 2vh;
     align-self: center;
     cursor: pointer;
+}
+.p-product-price{
+    text-align: center;
+    margin-top: 2vh;
+}
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.p-product-discount {
+    text-align: right; 
+    margin-top: -10px; 
+    font-size: 1vw;
+    color: red;
 }

@@ -5,7 +5,7 @@
     </head>
     <body>
         <header>
-            <img class="logo" src="../assets/logo2.png" alt="logo">
+            <img routerLink='' class="logo" src="../assets/logo2.png" alt="logo">
             <input class="buscador">
             <button class="inicio_sesion">Iniciar Sesión</button>
         </header>
@@ -14,20 +14,15 @@
         @if (showSidenav) {
             <app-side-panel (closePanelEvent)="closePanel()"></app-side-panel>
         }
-        <a href="#">Inicio</a>
-        <a href="#">Nuevos</a>
-        <a href="#">Ofertas</a>
-        <a href="#">Más vendidos</a>
-        <a href="#">Atención al cliente</a>
-        <a href="#">Tu cesta</a>
-        
+        <a routerLink='' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Inicio</span></a>
+        <a routerLink="nuevos" routerLinkActive="active"><span>Nuevos</span></a>
+        <a routerLink="ofertas" routerLinkActive="active"><span>Ofertas</span></a>
+        <a routerLink="mas-vendidos" routerLinkActive="active"><span>Más vendidos</span></a>
+        <a routerLink="atencion-al-cliente" routerLinkActive="active"><span>Atención al cliente</span></a>
+        <a routerLink="tu-cesta" routerLinkActive="active"><span>Tu cesta</span></a>
+            
     </nav>
     <router-outlet></router-outlet>
-    <!--
-        <app-product></app-product>
-        <app-product-item></app-product-item>
-        
-    -->
         
     <footer>
         <p>&copy; 2024 Ecommerce. Todos los derechos reservados.</p>

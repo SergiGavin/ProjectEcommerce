@@ -1,5 +1,6 @@
 package ecommerce.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,9 +47,19 @@ public class ProductController {
             return new ResponseEntity<>("Producto no encontrado", HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/nuevos")
+    public List<ProductDTO> getNewProducts() {
+        List<ProductEntity> newProducts = productService.getNewProducts();
+        return convertToDTOs(newProducts);
+    }
+    @GetMapping("/ofertas")
+    public List<ProductDTO> getProductsWithDiscount() {
+        List<ProductEntity> newProducts = productService.getProductWithDiscount();
+        return convertToDTOs(newProducts);
+    }
     
     
-    
+  
     
     
     
@@ -66,7 +77,7 @@ public class ProductController {
                 entity.getPrice(),
                 entity.getStock_quantity(),
                 entity.getCategory(),
-                entity.getCreation_date(),
+                entity.getCreationDate(),
                 entity.getUpdate_date(),
                 entity.getDiscount(),
                 entity.getTaxes(),
@@ -92,7 +103,7 @@ public class ProductController {
             entity.getPrice(),
             entity.getStock_quantity(),
             entity.getCategory(),
-            entity.getCreation_date(),
+            entity.getCreationDate(),
             entity.getUpdate_date(),
             entity.getDiscount(),
             entity.getTaxes(),

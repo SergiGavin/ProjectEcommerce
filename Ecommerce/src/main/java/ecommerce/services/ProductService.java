@@ -21,4 +21,10 @@ public class ProductService {
 	 public Optional<ProductEntity> getProductById(Long productId) {
 	        return productRepository.findById(productId);
 	 }
+	 public List<ProductEntity> getNewProducts() {
+		 return productRepository.findAllByOrderByCreationDateDesc();
+	 }
+	 public List<ProductEntity> getProductWithDiscount() {
+		 return productRepository.findAllByOrderByDiscountDesc();
+	 }
 }
