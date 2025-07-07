@@ -1,1 +1,16 @@
-<p>ram works!</p>
+<div class="row">
+    <div *ngFor="let ram of RAM" class="col-4">
+        <div class="ram-container">
+            <p class="p-ram-name">{{ ram.product_name }}</p>
+
+            <div class="p-ram-image-container">
+                <a [routerLink]="['/detalle-producto', ram.id_product]">
+                    <img class="p-ram-image" [src]="ram.product_image" alt="{{ ram.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-ram-price">{{ ram.price }}€</p>
+        </div>
+    </div>
+</div>

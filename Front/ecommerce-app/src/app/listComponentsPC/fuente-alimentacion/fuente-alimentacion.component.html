@@ -1,1 +1,16 @@
-<p>fuente-alimentacion works!</p>
+<div class="row">
+    <div *ngFor="let fa of fuenteA" class="col-4">
+        <div class="fa-container">
+            <p class="p-fa-name">{{ fa.product_name }}</p>
+
+            <div class="p-fa-image-container">
+                <a [routerLink]="['/detalle-producto', fa.id_product]">
+                    <img class="p-fa-image" [src]="fa.product_image" alt="{{ fa.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-fa-price">{{ fa.price }}€</p>
+        </div>
+    </div>
+</div>

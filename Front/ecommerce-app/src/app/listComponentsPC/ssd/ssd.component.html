@@ -1,1 +1,14 @@
-<p>ssd works!</p>
+<div class="row">
+    <div *ngFor="let ssd of ssd" class="col-4">
+        <div class="ssd-container">
+            <p class="p-ssd-name">{{ ssd.product_name }}</p>
+
+            <div class="p-ssd-image-container">
+                <a [routerLink]="['/detalle-producto', ssd.id_product]">
+                    <img class="p-ssd-image" [src]="ssd.product_image" alt="{{ ssd.product_name }}">
+                </a>                      
+            </div>
+            <p class="p-ssd-price">{{ ssd.price }}€</p>
+        </div>
+    </div>
+</div>

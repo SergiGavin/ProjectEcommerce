@@ -1,3 +1,7 @@
+
+
+
+
 .graficas-component-container,
 .placabase-component-container,
 .discosduros-component-container,
@@ -24,13 +28,17 @@
 .ventilador_cpu-component-container img{
 
     height: 20vh; 
+    border: 1px solid #534c4c;
+    border-radius: 5px;
 }
 a{
     text-decoration: none; 
     color: black;
+    font-weight: bold;
 }
 .row{
     margin-top: 8vh;
     margin-bottom: 10vh;
     margin-right: 0px;
 }
+

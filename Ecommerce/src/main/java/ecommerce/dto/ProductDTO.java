@@ -24,13 +24,14 @@ public class ProductDTO {
 	private String product_image;
 	private Boolean availability;
 	private String technical_specifications;
+	private int sales;
 	private List<Long> productOrders;
 	
 	public ProductDTO() {}
 	
 	public ProductDTO(Long id_product, String product_name, String description, double price, int stock_quantity,
 			String category, Date creation_date, Date update_date, double discount, double taxes, String product_image,
-			Boolean availability, String technical_specifications, List<Long> productOrders) {
+			Boolean availability, String technical_specifications,int sales, List<Long> productOrders) {
 		super();
 		this.id_product = id_product;
 		this.product_name = product_name;
@@ -45,6 +46,7 @@ public class ProductDTO {
 		this.product_image = product_image;
 		this.availability = availability;
 		this.technical_specifications = technical_specifications;
+		this.sales = sales;
 		this.productOrders = productOrders;
 	}
 	

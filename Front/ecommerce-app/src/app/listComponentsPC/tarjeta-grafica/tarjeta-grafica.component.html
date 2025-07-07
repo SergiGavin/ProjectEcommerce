@@ -1,1 +1,16 @@
-<p>tarjeta-grafica works!</p>
+<div class="row">
+    <div *ngFor="let tg of tarjetaGrafica" class="col-4">
+        <div class="tg-container">
+            <p class="p-tg-name">{{ tg.product_name }}</p>
+
+            <div class="p-tg-image-container">
+                <a [routerLink]="['/detalle-producto', tg.id_product]">
+                    <img class="p-tg-image" [src]="tg.product_image" alt="{{ tg.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-tg-price">{{ tg.price }}€</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+    <div *ngFor="let smart of smartphone" class="col-4">
+        <div class="smart-container">
+            <p class="p-smart-name">{{ smart.product_name }}</p>
+
+            <div class="p-smart-image-container">
+                <a [routerLink]="['/detalle-producto', smart.id_product]">
+                    <img class="p-smart-image" [src]="smart.product_image" alt="{{ smart.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-smart-price">{{ smart.price }}€</p>
+        </div>
+    </div>
+</div>

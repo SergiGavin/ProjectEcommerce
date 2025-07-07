@@ -1,1 +1,16 @@
-<p>ventiladores-suple works!</p>
+<div class="row">
+    <div *ngFor="let vs of ventiladorS" class="col-4">
+        <div class="vs-container">
+            <p class="p-vs-name">{{ vs.product_name }}</p>
+
+            <div class="p-vs-image-container">
+                <a [routerLink]="['/detalle-producto', vs.id_product]">
+                    <img class="p-vs-image" [src]="vs.product_image" alt="{{ vs.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-vs-price">{{ vs.price }}€</p>
+        </div>
+    </div>
+</div>

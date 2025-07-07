@@ -27,4 +27,10 @@ public class ProductService {
 	 public List<ProductEntity> getProductWithDiscount() {
 		 return productRepository.findAllByOrderByDiscountDesc();
 	 }
+	 public List<ProductEntity> getCategoryProducts(String category) {
+		 return productRepository.findByCategory(category);
+	 }
+	 public List<ProductEntity> getProductBySalesDesc() {
+		 return productRepository.findAllByOrderBySalesDesc();
+	 }
 }

@@ -1,1 +1,16 @@
-<p>tarjeta-sonido works!</p>
+<div class="row">
+    <div *ngFor="let ts of tarjetaSonido" class="col-4">
+        <div class="ts-container">
+            <p class="p-ts-name">{{ ts.product_name }}</p>
+
+            <div class="p-ts-image-container">
+                <a [routerLink]="['/detalle-producto', ts.id_product]">
+                    <img class="p-ts-image" [src]="ts.product_image" alt="{{ ts.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-ts-price">{{ ts.price }}€</p>
+        </div>
+    </div>
+</div>

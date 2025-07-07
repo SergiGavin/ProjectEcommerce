@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `product_image` VARCHAR(255) NOT NULL,
   `availability` BOOLEAN NOT NULL,
   `technical_specifications` TEXT NULL,
+  `sales` INT NOT NULL,
   `supplier_id_supplier` BIGINT NOT NULL,
   PRIMARY KEY (`id_product`, `supplier_id_supplier`),
   CONSTRAINT `fk_product_supplier1`
@@ -187,9 +188,9 @@ VALUES
 
 
 -- Insertar datos de ejemplo en la tabla Product
-INSERT INTO product (id_product, product_name, description, price, stock_quantity, category, creation_date, update_date, discount, taxes, product_image, availability, technical_specifications, supplier_id_supplier)
+INSERT INTO product (id_product, product_name, description, price, stock_quantity, category, creation_date, update_date, discount, taxes, product_image, availability, technical_specifications, sales,supplier_id_supplier)
 VALUES
-(1, 'NVIDIA GeForce RTX 4090', 'La NVIDIA® GeForce RTX™ 4090 es la GPU GeForce definitiva. Ofrece un enorme salto en rendimiento, eficiencia y gráficos impulsados por IA con DLSS 3. Experimente juegos de rendimiento ultraalto, mundos virtuales increíblemente detallados con trazado de rayos, productividad sin precedentes y nuevas formas de crear. Está impulsado por la arquitectura NVIDIA Ada Lovelace y viene con 24 GB de memoria G6X para brindar la mejor experiencia a jugadores y creadores.', 1899.99, 100, 'Tarjeta Gráfica', '2023-01-01', NULL, 0.10, 0.21, 'https://img.pccomponentes.com/articles/1079/10792156/1155-msi-geforce-rtx-4090-gaming-x-slim-24gb-gddr6x-dlss3.jpg', TRUE, 'Unidad de procesamiento de gráficos NVIDIA® GeForce RTX™ 4090
+(1, 'NVIDIA GeForce RTX 4090', 'La NVIDIA® GeForce RTX™ 4090 es la GPU GeForce definitiva. Ofrece un enorme salto en rendimiento, eficiencia y gráficos impulsados por IA con DLSS 3. Experimente juegos de rendimiento ultraalto, mundos virtuales increíblemente detallados con trazado de rayos, productividad sin precedentes y nuevas formas de crear. Está impulsado por la arquitectura NVIDIA Ada Lovelace y viene con 24 GB de memoria G6X para brindar la mejor experiencia a jugadores y creadores.', 1899.99, 100, 'Tarjeta_grafica', '2023-01-01', NULL, 0.10, 0.21, 'https://img.pccomponentes.com/articles/1079/10792156/1155-msi-geforce-rtx-4090-gaming-x-slim-24gb-gddr6x-dlss3.jpg', TRUE, 'Unidad de procesamiento de gráficos NVIDIA® GeForce RTX™ 4090
 Interfaz PCI Express® Gen 4
 Relojes centrales
 Rendimiento extremo: 2610 MHz (MSI Centro)
@@ -211,8 +212,8 @@ Compatibilidad con la versión DirectX 12 Ultimate
 Soporte de versión OpenGL 4.6
 Pantallas máximas 4
 Tecnología G-SYNC® Sí
-Resolución máxima digital 7680 x 4320', 1),
-(2, 'LG 43UR73006LA 43" LED UltraHD 4K HDR10 Pro"', 'El LG UHD TV Serie 73 con HDR10 Pro cuenta con unos niveles de brillo optimizados para que los colores sean más intensos y los detalles más notables.', 339.01, 50, 'TV', '2023-01-02', NULL, 0.02, 0.21, 'https://img.pccomponentes.com/articles/1073/10735859/1304-lg-43ur73006la-43-led-ultrahd-4k-hdr10-pro.jpg', FALSE, 'Exhibición:
+Resolución máxima digital 7680 x 4320', 50, 1),
+(2, 'LG 43UR73006LA 43" LED UltraHD 4K HDR10"', 'El LG UHD TV Serie 73 con HDR10 Pro cuenta con unos niveles de brillo optimizados para que los colores sean más intensos y los detalles más notables.', 339.99, 50, 'TV', '2023-01-02', NULL, 0.02, 0.21, 'https://img.pccomponentes.com/articles/1073/10735859/1304-lg-43ur73006la-43-led-ultrahd-4k-hdr10-pro.jpg', FALSE, 'Exhibición:
 Diagonal de la pantalla: 109,2 cm (43")
 Tipo HD: 4K Ultra HD
 Escaneado progresivo: Si
@@ -267,7 +268,7 @@ Versión de Bluetooth: 5.0
 Bluetooth de baja energía (BLE, Bluetooth Low Energy): Si
 Miracast: No
 Navegación: Si
-Navegador web: Si', 2),
+Navegador web: Si', 60,2),
 (3, 'Tempest K11 Ogre Teclado Mecánico Gaming RGB Negro', 'Un teclado con tecnología de cable reforzado mallado USB que destaca por su diseño y ergonomía desde su primer uso. Su supresión de teclado numérico lateral te proporciona una libertad de movimiento más amplia con el objetivo de que tu tiempo de reacción y respuesta, se reduzcan considerablemente, ya que te evitará el efecto choque entre ratón y teclado.', 25.99, 75, 'Teclado', '2023-01-03', NULL, 0.03, 0.21, 'https://img.pccomponentes.com/articles/43/433512/1815-tempest-k11-ogre-teclado-mecanico-gaming-rgb-negro-especificaciones.jpg', TRUE, 'Número de teclas: 87 teclas
 Mecanico: Si
 Switch: Azul OUTEMU
@@ -276,7 +277,7 @@ Teclas de combinación FN para funciones multimedia
 Cubierta superior de plástico
 Cubierta inferior de ABS
 Medidas: 360mm*135mm*37mm 
-Peso: 670gr', 3),
+Peso: 670gr', 30,3),
 (4,'HP Victus 16-r0019ns ','El portátil HP Victus se ha diseñado para jugar con la máxima calidad. Este elegante dispositivo cuenta con un procesador Intel® Core™ de 13.ª generación y una tarjeta gráfica NVIDIA® moderna. Este portátil también dispone de nuevas características de optimización para ofrecer un rendimiento todavía mejor , un diseño térmico mejorado y un teclado perfeccionado.', 1499.95,20,'Portatil','2023-01-07', NULL, 0.05, 0.21,'https://img.pccomponentes.com/articles/1073/10733300/1385-hp-victus-16-r0019ns-intel-core-i7-13700h-32gb-1tb-ssd-rtx-4060-161.jpg',TRUE,
  'Procesador Intel® Core™ i7-13700H (hasta 5,0 GHz con tecnología Intel® Turbo Boost, 24 MB de caché L3, 14 núcleos, 20 subprocesos)
 Memoria RAM RAM DDR5-5200 MHz 32 GB (2 x 16 GB)
@@ -302,7 +303,7 @@ Sistema operativo
 SIN SISTEMA OPERATIVO
 Dimensiones (Ancho x Profundidad x Altura) 36,9 x 25,94 x 2,29 (frontal) – 2,39 (posterior) cm;
 Peso 2,33 kg;
-Color Plata mica, logotipo cromado oscuro',1),
+Color Plata mica, logotipo cromado oscuro',70,1),
 (5,'Apple iPhone 15 Plus 128GB Rosa Libre','Apple iPhone 15. La Dynamic Island a la cabeza de todo. Nueva cámara de 48 Mpx. Fotos de altísima resolución. Teleobjetivo x2. Diseño superduro con aluminio y vidrio tintado en masa. El USB C llega a puerto.', 990.95, 60,'Smartphone','2023-12-10',NULL, 0.20, 0.21,'https://img.pccomponentes.com/articles/1077/10777794/1158-apple-iphone-15-plus-128gb-rosa-libre.jpg', true,
 'Acabado
 Diseño de aluminio
@@ -354,7 +355,7 @@ Corrección avanzada de ojos rojos
 Estabilización automática de imagen
 Modo ráfaga
 Geoetiquetado de fotos
-Captura de imagen en formato HEIF y JPEG',2),
+Captura de imagen en formato HEIF y JPEG', 55,2),
 (6,'Nintendo Switch Edición Mario OLED Roja','Nintendo Switch (modelo OLED) incluye una pantalla de 7 pulgadas con un marco más fino. Los colores intensos y el alto contraste de la pantalla proporcionan una experiencia de juego portátil y de sobremesa enriquecedora, y aportan mucha vida a los juegos, tanto si compites a gran velocidad sobre el asfalto como si te ves las caras con enemigos temibles.',349.99, 50, 'Gaming','2024-01-08', null, 0.02, 0.21,'https://img.pccomponentes.com/articles/1077/10770738/1229-nintendo-switch-edicion-mario-oled-roja.jpg',FALSE,
 'Desempeño
 Plataforma: Nintendo Switch
@@ -410,8 +411,8 @@ Peso: 320 g
 Contenido del embalaje
 Juego de video incluido: No
 Cargador de baterias: Si
-Manual de usuario: Si',3),
-(7,'Gigabyte GeForce RTX 4060','Las GPU NVIDIA® GeForce RTX® serie 40 son más que rápidas para jugadores y creadores. Cuentan con la tecnología de la arquitectura ultra eficiente NVIDIA Ada Lovelace, que ofrece un salto espectacular tanto en rendimiento como en gráficos con tecnología de IA. Disfruta de mundos virtuales realistas con trazado de rayos y juegos con FPS ultra altos y la latencia más baja. Descubre nuevas y revolucionarias formas de crear contenido y una aceleración de flujo de trabajo sin precedentes',349.99,50,'Tarjeta Gráfica','2024-01-20',null,0.05,0.21,'https://img.pccomponentes.com/articles/1073/10739332/4378-gigabyte-geforce-rtx-4060-eagle-oc-8gb-gddr6-dlss3-especificaciones.jpg',true,
+Manual de usuario: Si', 80,3),
+(7,'Gigabyte GeForce RTX 4060','Las GPU NVIDIA® GeForce RTX® serie 40 son más que rápidas para jugadores y creadores. Cuentan con la tecnología de la arquitectura ultra eficiente NVIDIA Ada Lovelace, que ofrece un salto espectacular tanto en rendimiento como en gráficos con tecnología de IA. Disfruta de mundos virtuales realistas con trazado de rayos y juegos con FPS ultra altos y la latencia más baja. Descubre nuevas y revolucionarias formas de crear contenido y una aceleración de flujo de trabajo sin precedentes',349.99,50,'Tarjeta_grafica','2024-01-20',null,0.05,0.21,'https://img.pccomponentes.com/articles/1073/10739332/4378-gigabyte-geforce-rtx-4060-eagle-oc-8gb-gddr6-dlss3-especificaciones.jpg',true,
 'Procesamiento de gráficos GeForce RTX™ 4060
 Reloj de núcleo 2505 MHz (Reference card: 2460 MHz)
 Núcleos CUDA® 3072
@@ -431,8 +432,8 @@ Conectores de alimentación 8 pines * 1
 Producción
 DisplayPort 1.4a*2
 HDMI2.1a*2
-Accesorios Guía rápida',1),
-(8,'Samsung TQ85QN800CTXXC 85" Neo QLED UltraHD 8K','Explora las posibilidades del 8K con Neo QLED 8K.  Observa hasta el último detalle. Verás cada detalle hasta en las escenas más oscuras con un control de iluminación más preciso gracias a miles de Mini LED, que mejoran el nivel de negro y el contraste.',3789.01,70,'TV','2024-02-14', null,0.03,0.21,'https://img.pccomponentes.com/articles/1073/10733916/1156-samsung-tq85qn800ctxxc-85-neo-qled-ultrahd-8k-quantum-hdr-8k-plus.jpg', true,'QLED
+Accesorios Guía rápida',71,1),
+(8,'Samsung TQ85QN800CTXXC 85" QLED UltraHD','Explora las posibilidades del 8K con Neo QLED 8K.  Observa hasta el último detalle. Verás cada detalle hasta en las escenas más oscuras con un control de iluminación más preciso gracias a miles de Mini LED, que mejoran el nivel de negro y el contraste.',3789.99,70,'TV','2024-02-14', null,0.03,0.21,'https://img.pccomponentes.com/articles/1073/10733916/1156-samsung-tq85qn800ctxxc-85-neo-qled-ultrahd-8k-quantum-hdr-8k-plus.jpg', true,'QLED
 Serie 8
 Pantalla Tamaño de pantalla 85"
 Tasa de Refresco 100Hz
@@ -470,7 +471,7 @@ Woofer Sí
 Multiroom Link Sí
 Audio Bluetooth Sí
 Compatible Dual Audio (Bluetooth) Sí
-Buds Auto Switch Sí',2),
+Buds Auto Switch Sí', 32,2),
 (9,'MSI Clutch GM50 Ratón Gaming 7200 DPI','El ratón Clutch GM50 Gaming está diseñado para el gaming con su forma sólida y funciones únicas. Con un preciso sensor óptico PMW-3330 podrás configurar la resolución desde los 400 ppi hasta los 7200 ppi.',55.95,90,'Ratones','2023-12-10', null,0.10,0.21,'https://img.pccomponentes.com/articles/18/183440/6.jpg',true,
 'Sensor de juego óptico PMW-3330
 Diseño ergonómico ligero
@@ -492,7 +493,7 @@ Peso y dimensiones
 Ancho : 67 mm
 Profundidad : 120 mm
 Altura : 42 mm
-Peso del ratón : 87 g',2),
+Peso del ratón : 87 g', 95,2),
 (10,'AMD Ryzen 7 7800X3D 4.2 GHz/5 GHz','El procesador para juegos que domina el mundo de la mano de la tecnología AMD 3D V-Cache™, para ganar aún más rendimiento de juego. Sin importar la configuración ni la resolución que uses, lleva a tu equipo a la victoria con este maravilloso procesador para juegos. Disfruta, además, las ventajas de AMD 3D V-Cache™, la tecnología de punta que es sinónimo de latencia baja y mucho rendimiento de juego.',389.95, 70,'Procesador','2023-07-30',null,0.09,0.21,'https://img.pccomponentes.com/articles/1066/10665103/1575-amd-ryzen-7-7800x3d-42-ghz-5-ghz.jpg', true,'Procesador
 Fabricante de procesador: AMD
 Modelo del procesador: 7800X3D
@@ -521,8 +522,8 @@ Modelo de adaptador de gráficos discretos: No disponible
 Características
 Segmento de mercado: Escritorio
 Versión de entradas de PCI Express: 5.0
-Sistemas operativos compatibles: Windows 11/10 x64, RHEL x86 64-bit, Ubuntu x86 64-bit',1),
-(11,'MSI PRO Z790-A MAX WIFI', 'PRO Z790-A MAX WIFI ofrece un diseño simple con una armoniosa combinación de colores plateados que combina perfectamente con las PC blancas y negras. Está diseñado con muchas características exclusivas de MSI, una conveniente solución Wi-Fi 7 y optimización DDR5 para procesadores Intel® Core™ de 14.ª y 13.ª generación.', 279.99, 50, 'Placa base','2024-02-10', null, 0.04, 0.21, 'https://img.pccomponentes.com/articles/1079/10798709/1130-msi-pro-z790-a-max-wifi.jpg', true, 'Procesador
+Sistemas operativos compatibles: Windows 11/10 x64, RHEL x86 64-bit, Ubuntu x86 64-bit', 110,1),
+(11,'MSI PRO Z790-A MAX WIFI', 'PRO Z790-A MAX WIFI ofrece un diseño simple con una armoniosa combinación de colores plateados que combina perfectamente con las PC blancas y negras. Está diseñado con muchas características exclusivas de MSI, una conveniente solución Wi-Fi 7 y optimización DDR5 para procesadores Intel® Core™ de 14.ª y 13.ª generación.', 279.99, 50, 'Placa_base','2024-02-10', null, 0.04, 0.21, 'https://img.pccomponentes.com/articles/1079/10798709/1130-msi-pro-z790-a-max-wifi.jpg', true, 'Procesador
 Fabricante de procesador: Intel
 Socket de procesador: LGA 1700
 Procesador compatible: Intel® Celeron®, Intel® Pentium®, Intel® Pentium® Gold
@@ -551,7 +552,7 @@ Conector de panel delantero: Si
 Conector de ventilador CPU: Si
 Conector de instrusión a chasis: Si
 Conector TPM: Si
-Conector para tiras LED RGB: Si',1),
+Conector para tiras LED RGB: Si', 94,1),
 (12,'WD BLACK SN770 1TB SSD PCIe Gen4 NVMe','Entra en acción al instante con el WD_BLACK™ SN770 NVMe™ SSD. Este disco se ha diseñado específicamente para jugar y cuenta con la interfaz PCIe® Gen4, que ofrece una velocidad impresionante de hasta 5150 MB/s (en los modelos de 1 TB y 2 TB).', 81.98, 60, 'SSD', '2024-01-15', null, 0.04, 0.21, 'https://img.pccomponentes.com/articles/1006/10060346/1242-wd-black-sn770-1tb-nvme-ssd.jpg',true, 'NTERFAZ: PCIe® Gen4 16GT/s, hasta 4 carriles
 DIMENSIONES:
 LONGITUD: 80 ± 0,15 mm
@@ -572,7 +573,7 @@ RENDIMIENTO:
 Lectura secuencial (hasta)3: 1 TB: 5150 MB/s
 Escritura secuencial (hasta)3: 1 TB: 4900 MB/s
 Lectura aleatoria: 1TB: 740K IOPS
-Escritura aleatoria: 1TB: 800K IOPS',1),
+Escritura aleatoria: 1TB: 800K IOPS', 40,1),
 (13,'Corsair Vengeance 6000MHz PC5-48000 32GB','La memoria CORSAIR VENGEANCE RGB DDR5 ofrece rendimiento DDR5, frecuencias más altas y mayores capacidades optimizadas para placas base Intel®, mientras ilumina su PC con iluminación RGB de diez zonas dinámica y direccionable individualmente. Los chips de memoria de alta frecuencia cuidadosamente seleccionados permiten un procesamiento, renderizado y almacenamiento en búfer más rápidos que nunca, con regulación de voltaje integrada para un overclocking fácil y finamente controlado.',128.99, 30,'RAM','2023-12-15',null,0.08,0.21,'https://img.pccomponentes.com/articles/1071/10711396/1323-corsair-vengeance-rgb-ddr5-6000mhz-pc5-48000-32gb-2x16gb-cl36-negro.jpg', true,'Densidad: 32 GB (2 x 16 GB)
 Velocidad: DDR5 6000 MHz
 Latencia probada: 36-44-44-96
@@ -588,7 +589,113 @@ Compatibilidad: Intel Serie 600 y Serie 700
 Dimensiones del módulo (L x An x Al): 138 x 7 x 45 mm
 Peso: 0,048 kg
 Dimensiones con embalaje: 131 x 11 x 162 mm
-Peso embalado: 0,15 kg',1 );
+Peso embalado: 0,15 kg', 84,1 ),
+(14,
+    'Corsair iCUE H100i ELITE CAPELLIX XT',
+    'Sistema de refrigeración líquida todo en uno con radiador de 240mm, iluminación RGB y ventiladores ML120.',
+    159.99,
+    40,
+    'Refrigeracion',
+    '2024-03-15',
+    NULL,
+    0.10,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/1067/10671982/1943-corsair-icue-h100i-elite-capellix-xt-kit-refrigeracion-liquida-240mm-negra.jpg',
+    TRUE,
+    'Radiador: 240mm, Ventiladores: 2x 120mm ML RGB, Compatible: Intel/AMD, Bomba de alto rendimiento, Software: iCUE',70,
+    1
+),
+(15,
+    'Creative Sound BlasterX AE-5 Plus',
+    'Tarjeta de sonido interna PCIe con DAC SABRE32, RGB integrado y soporte para sonido envolvente 5.1.',
+    129.99,
+    25,
+    'Tarjeta_sonido',
+    '2024-04-01',
+    NULL,
+    0.05,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/30/309881/1807-creative-sound-blasterx-ae-5-plus-tarjeta-de-sonido.jpg',
+    TRUE,
+    'Interfaz: PCIe, DAC: ESS SABRE32, Salida: 5.1, Entrada: Mic/AUX, RGB personalizable, Software: Sound Blaster Command', 24,
+    1
+),
+(16,
+    'Noctua NF-A14 PWM Chromax Black',
+    'Ventilador de 140mm premium para montaje superior, con diseño silencioso y accesorios antivibración.',
+    24.95,
+    100,
+    'Ventilador_suple',
+    '2024-04-15',
+    NULL,
+    0.00,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/20/202293/n2.jpg',
+    TRUE,
+    'Tamaño: 140mm, Velocidad: 1500 RPM, Flujo de aire: 82.5 CFM, Nivel de ruido: 24.6 dB(A), Conector: 4-pin PWM', 39,
+    1
+),
+(17,
+    'Seasonic FOCUS GX-750 80+ Gold',
+    'Fuente de alimentación totalmente modular de 750W con certificación 80 PLUS Gold y ventilador silencioso.',
+    109.99,
+    70,
+    'Fuente',
+    '2024-05-02',
+    NULL,
+    0.07,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/29/297829/1291-seasonic-focus-gx-750-750w-80-plus-gold-modular-f04b3831-fa56-467d-a535-f10f04feb6e6.jpg',
+    TRUE,
+    'Potencia: 750W, Certificación: 80+ Gold, Modular: Sí, Ventilador: 120mm FDB, Protección: OPP/OVP/UVP/SCP',20,
+    1
+),
+(18,
+    'be quiet! Dark Rock Pro 4',
+    'Disipador de aire para CPU ultra silencioso con doble torre, doble ventilador y alto rendimiento térmico.',
+    89.99,
+    45,
+    'Ventilador_CPU',
+    '2024-05-10',
+    NULL,
+    0.06,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/30/309590/1711-be-quiet-dark-rock-pro-4-foto.jpg',
+    TRUE,
+    'Tipo: Aire, Altura: 162.8mm, Ventiladores: 2x Silent Wings PWM, TDP: 250W, Compatible: Intel/AMD, Nivel de ruido: máx 24.3 dB', 60,
+    1
+),
+(19,
+    'LG UltraGear 27GN950-B 27" 144Hz',
+    'Monitor gaming de 27 pulgadas con resolución 4K UHD, panel Nano IPS, tiempo de respuesta de 1ms, tasa de refresco de 144Hz y compatibilidad con G-Sync para una experiencia de juego fluida y vibrante.',
+    749.99,
+    60,
+    'Monitor',
+    '2024-02-15',
+    NULL,
+    0.05,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/32/324779/1567-lg-ultragear-27gn950-b-27-led-nanoips-ultrahd-4k-144hz-freesync-premium-pro.jpg',
+    TRUE,
+    'Tamaño: 27", Resolución: 3840x2160 (4K UHD), Panel: Nano IPS, Frecuencia: 144Hz, Tiempo de respuesta: 1ms, G-Sync: Compatible, HDR: VESA DisplayHDR 600, Conectividad: HDMI, DisplayPort, USB 3.0, Ajustable en altura: Sí',50,
+    1
+),
+(20,
+    'AOC C27G2ZU/BK 27" Curvo Full HD 240Hz',
+    'Monitor gaming curvo de 27 pulgadas con resolución Full HD, tasa de refresco ultra rápida de 240Hz, tiempo de respuesta de 0.5ms y tecnología FreeSync Premium para una experiencia fluida sin tearing.',
+    279.99,
+    85,
+    'Monitor',
+    '2024-03-05',
+    NULL,
+    0.07,
+    0.21,
+    'https://thumb.pccomponentes.com/w-530-530/articles/29/297908/1741-aoc-c27g2ze-bk-27-led-fullhd-240hz-freesync-premium-curva-review.jpg',
+    TRUE,
+    'Tamaño: 27", Resolución: 1920x1080 (Full HD), Curvatura: 1500R, Frecuencia: 240Hz, Tiempo de respuesta: 0.5ms, Panel: VA, FreeSync Premium: Sí, Conectividad: HDMI, DisplayPort, USB Hub, Altavoces integrados: Sí, Ajuste en altura: Sí',48,
+    1
+)
+;
 
 -- id_product, product_name, description, price, stock_quantity, category, creation_date, update_date, discount, taxes, product_image, availability, technical_specifications, supplier_id_supplier
 

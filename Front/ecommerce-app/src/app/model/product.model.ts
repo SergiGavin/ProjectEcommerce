@@ -12,8 +12,9 @@ export interface Product{
     discount: number;
     taxes: number;
     product_image: string;
-    availability: string;
+    availability: boolean;
     technical_specifications: string;
+    sales: number;
     productOrders: number[];
 }
 

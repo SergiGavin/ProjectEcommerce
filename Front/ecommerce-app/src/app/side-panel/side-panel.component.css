@@ -7,7 +7,7 @@
     left: 40vw; 
     top:0; 
     z-index: 1000;
-    background-color: #f3e8e8;
+    background-color: #f7c7c7;
 }
 
 .sidePanel button{
@@ -26,7 +26,6 @@
     display: block;
     margin-bottom: 1vh;
     margin-left: 15vw;
-    text-decoration: underline;
 }
 .panel_category{
     display: flex;
@@ -36,6 +35,8 @@
 }
 a{
     font-weight: bold;
+    text-decoration: none;
+    color: #ee8484;
 }
 .panel_category a:hover {
     color: #ee8484; 

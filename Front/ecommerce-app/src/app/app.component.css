@@ -1,44 +1,53 @@
-body {
-    font-family: Arial, sans-serif;
+
+
+
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f3e8e8ef; 
 }
 
-header {
+.app-container {
+    background-color: #f8cbcb;
     display: flex;
-    background-color:#F0BA6A;
-    color: #ffffff;
-
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+main {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #232f3e;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    height: 5vh;
+}
 nav {
-    background-color: #ee8484;
+    background-color: #df9191;
     display: flex;
     justify-content: center;
     margin-bottom: 2vh;
 }
-/*#ED796B #F0BA6A  */
 nav a {
     color: black;
     text-align: center; 
     padding: 14px 16px;
     text-decoration: none;
     font-size: 2vh;
-}
-
-nav a {
     flex: 1;
     text-align: center;
 }
 
 nav a:hover {
-    background-color: #eb9b9b;
+    background-color: #f7c7c7;
     color: black;
 }
 .selector:hover{
-    background-color: #eb9b9b;
+    background-color: #f7c7c7;
 }
 .selector{
     color: black;
@@ -46,7 +55,7 @@ nav a:hover {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 2vh;
-    background-color: #ee8484;
+    background-color: #df9191;
     border:none;
 }
 
@@ -55,8 +64,6 @@ footer {
     color: #ffffff;
     text-align: center;
     padding: 10px;
-    position:relative;
-    bottom: 0;
     width: 100%;
     height: 5vh;
 }
@@ -79,3 +86,4 @@ footer {
 .active {
     background-color: #eb9b9b; 
 }
+

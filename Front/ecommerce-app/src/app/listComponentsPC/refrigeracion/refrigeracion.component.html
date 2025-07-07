@@ -1,1 +1,15 @@
-<p>refrigeracion works!</p>
+<div class="row">
+    <div *ngFor="let rf of refrigeracion" class="col-4">
+        <div class="rf-container">
+            <p class="p-rf-name">{{ rf.product_name }}</p>
+
+            <div class="p-rf-image-container">
+                <a [routerLink]="['/detalle-producto', rf.id_product]">
+                    <img class="p-rf-image" [src]="rf.product_image" alt="{{ rf.product_name }}">
+                </a>
+                                
+            </div>
+            <p class="p-rf-price">{{ rf.price }}€</p>
+        </div>
+    </div>
+</div>

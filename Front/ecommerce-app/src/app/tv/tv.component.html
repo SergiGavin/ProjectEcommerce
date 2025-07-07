@@ -1,0 +1,15 @@
+<div class="row">
+    <div *ngFor="let tv of televisor" class="col-4">
+        <div class="tv-container">
+            <p class="p-tv-name">{{ tv.product_name }}</p>
+
+            <div class="p-tv-image-container">
+                <a [routerLink]="['/detalle-producto', tv.id_product]">
+                    <img class="p-tv-image" [src]="tv.product_image" alt="{{ tv.product_name }}">
+                </a>                    
+            </div>
+
+            <p class="p-tv-price">{{ tv.price }}€</p>
+        </div>
+    </div>
+</div>

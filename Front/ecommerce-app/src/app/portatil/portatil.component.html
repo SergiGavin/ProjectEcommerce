@@ -1,0 +1,15 @@
+<div class="row">
+    <div *ngFor="let port of portatil" class="col-4">
+        <div class="port-container">
+            <p class="p-port-name">{{ port.product_name }}</p>
+
+            <div class="p-port-image-container">
+                <a [routerLink]="['/detalle-producto', port.id_product]">
+                    <img class="p-port-image" [src]="port.product_image" alt="{{ port.product_name }}">
+                </a>                    
+            </div>
+
+            <p class="p-port-price">{{ port.price }}€</p>
+        </div>
+    </div>
+</div>

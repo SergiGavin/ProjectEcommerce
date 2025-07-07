@@ -12,6 +12,11 @@ import { TarjetaSonidoComponent } from './listComponentsPC/tarjeta-sonido/tarjet
 import { VentiladoresSupleComponent } from './listComponentsPC/ventiladores-suple/ventiladores-suple.component';
 import { FuenteAlimentacionComponent } from './listComponentsPC/fuente-alimentacion/fuente-alimentacion.component';
 import { VentiladoresCpuComponent } from './listComponentsPC/ventiladores-cpu/ventiladores-cpu.component';
+import { SmartphoneComponent } from './smartphone/smartphone.component';
+import { PortatilComponent } from './portatil/portatil.component';
+import { MonitorComponent } from './monitor/monitor.component';
+import { TVComponent } from './tv/tv.component';
+import { GamingComponent } from './gaming/gaming.component';
 
 export const routes: Routes = [
     {
@@ -27,10 +32,13 @@ export const routes: Routes = [
         component: ProductComponent
     },
     {
+        path:'ventas',
+        component: ProductComponent
+    },
+    {
         path:'nuevos/detalle-producto/:id_product',
         component: ProductItemComponent
     },
-    // Añado para las ofertas 10/11/2024
     {
         path:'ofertas/detalle-producto/:id_product',
         component: ProductItemComponent
@@ -40,44 +48,64 @@ export const routes: Routes = [
         component: ComponentespcComponent
     },
     {
-        path:'tarjeta_grafica',
+        path:'category/tarjeta_grafica',
         component: TarjetaGraficaComponent
     },
     {
-        path:'placa_base',
+        path:'category/placa_base',
         component: PlacaBaseComponent
     },
     {
-        path:'ssd',
+        path:'category/ssd',
         component: SsdComponent
     },
     {
-        path:'ram',
+        path:'category/ram',
         component: RamComponent
     },
     {
-        path:'procesadores',
+        path:'category/procesadores',
         component: ProcesadoresComponent
     },
     {
-        path:'refrigeracion',
+        path:'category/refrigeracion',
         component: RefrigeracionComponent
     },
     {
-        path:'tarjetas_sonido',
+        path:'category/tarjetas_sonido',
         component: TarjetaSonidoComponent
     },
     {
-        path:'ventiladores_suple',
+        path:'category/ventiladores_suple',
         component: VentiladoresSupleComponent
     },
     {
-        path:'fuentes_alimentacion',
+        path:'category/fuentes_alimentacion',
         component: FuenteAlimentacionComponent
     },
     {
-        path:'ventiladores_cpu',
+        path:'category/ventiladores_cpu',
         component: VentiladoresCpuComponent
+    },
+    {
+        path:'category/smartphones',
+        component: SmartphoneComponent
+    },
+    {
+        path:'category/portatil',
+        component: PortatilComponent
+    },
+    {
+        path:'category/monitor',
+        component: MonitorComponent
+    },
+    {
+        path:'category/tv',
+        component: TVComponent
+    },
+    {
+        path:'category/gaming',
+        component: GamingComponent
     },
     {
         path:'',

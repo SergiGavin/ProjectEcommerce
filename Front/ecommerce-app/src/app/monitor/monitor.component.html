@@ -1,0 +1,15 @@
+<div class="row">
+    <div *ngFor="let mon of monitor" class="col-4">
+        <div class="mon-container">
+            <p class="p-mon-name">{{ mon.product_name }}</p>
+
+            <div class="p-mon-image-container">
+                <a [routerLink]="['/detalle-producto', mon.id_product]">
+                    <img class="p-mon-image" [src]="mon.product_image" alt="{{ mon.product_name }}">
+                </a>                    
+            </div>
+
+            <p class="p-mon-price">{{ mon.price }}€</p>
+        </div>
+    </div>
+</div>

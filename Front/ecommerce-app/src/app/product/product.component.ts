@@ -30,6 +30,8 @@ export class ProductComponent implements OnInit {
       this.fetchProductNuevos();
     } else if(rutaActual === '/ofertas'){
       this.fetchProductOfertas();
+    } else if(rutaActual === '/ventas'){
+      this.fetchProductVentas();
     }
   }
 
@@ -56,7 +58,14 @@ export class ProductComponent implements OnInit {
       this.product = product.slice(0,6);
     });
   }
-
+  fetchProductVentas(){
+    this.httpClient.get('http://localhost:8080/ecommerce/product/ventas')
+    .subscribe((product:any)=>{
+      console.log(product);
+      this.product = product.slice(0,6);
+    });
+  }
+  
 
   constructor(private router: Router) {
     this.rutaInicio();
@@ -69,8 +78,14 @@ export class ProductComponent implements OnInit {
   rutaOfertas(): boolean {
     return this.router.url === '/ofertas'
   }
+  rutaVentas(): boolean {
+    return this.router.url === '/ventas'
+  }
   rutaNuevos(): boolean {
     return this.router.url === '/nuevos'
+  }
+  rutaTarjetaGrafica(): boolean {
+    return this.router.url === '/tarjeta_grafica'
   }
 
   mostrarBanner: boolean = false;

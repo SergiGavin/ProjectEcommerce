@@ -1,1 +1,14 @@
-<p>procesadores works!</p>
+<div class="row">
+    <div *ngFor="let pr of procesadores" class="col-4">
+        <div class="pr-container">
+            <p class="p-pr-name">{{ pr.product_name }}</p>
+
+            <div class="p-pr-image-container">
+                <a [routerLink]="['/detalle-producto', pr.id_product]">
+                    <img class="p-pr-image" [src]="pr.product_image" alt="{{ pr.product_name }}">
+                </a>                 
+            </div>
+            <p class="p-pr-price">{{ pr.price }}€</p>
+        </div>
+    </div>
+</div>

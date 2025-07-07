@@ -1,1 +1,16 @@
-<p>placa-base works!</p>
+<div class="row">
+    <div *ngFor="let pb of placaBase" class="col-4">
+        <div class="pb-container">
+            <p class="p-pb-name">{{ pb.product_name }}</p>
+
+            <div class="p-pb-image-container">
+                <a [routerLink]="['/detalle-producto', pb.id_product]">
+                    <img class="p-pb-image" [src]="pb.product_image" alt="{{ pb.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-pb-price">{{ pb.price }}€</p>
+        </div>
+    </div>
+</div>

@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8"/>
-    </head>
-    <body>
-        <header>
-            <img routerLink='' class="logo" src="../assets/logo2.png" alt="logo">
-            <input class="buscador">
-            <button class="inicio_sesion">Iniciar Sesión</button>
-        </header>
-    <nav>
-        <button class="selector" (click)="toggleSidenav()">Mostrar Categorías</button>
-        @if (showSidenav) {
-            <app-side-panel (closePanelEvent)="closePanel()"></app-side-panel>
-        }
-        <a routerLink='' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Inicio</span></a>
-        <a routerLink="nuevos" routerLinkActive="active"><span>Nuevos</span></a>
-        <a routerLink="ofertas" routerLinkActive="active"><span>Ofertas</span></a>
-        <a routerLink="mas-vendidos" routerLinkActive="active"><span>Más vendidos</span></a>
-        <a routerLink="atencion-al-cliente" routerLinkActive="active"><span>Atención al cliente</span></a>
-        <a routerLink="tu-cesta" routerLinkActive="active"><span>Tu cesta</span></a>
-            
-    </nav>
+<div class="app-container">
+  <header>
+    <img routerLink='' class="logo" src="../assets/logo2.png" alt="logo">
+    <input class="buscador">
+    <button class="inicio_sesion">Iniciar Sesión</button>
+  </header>
+
+  <nav>
+    <button class="selector" (click)="toggleSidenav()">Mostrar Categorías</button>
+    <app-side-panel *ngIf="showSidenav" (closePanelEvent)="closePanel()"></app-side-panel>
+
+    <a routerLink='' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><span>Inicio</span></a>
+    <a routerLink="nuevos" routerLinkActive="active"><span>Nuevos</span></a>
+    <a routerLink="ofertas" routerLinkActive="active"><span>Ofertas</span></a>
+    <a routerLink="ventas" routerLinkActive="active"><span>Más vendidos</span></a>
+    <a routerLink="atencion-al-cliente" routerLinkActive="active"><span>Atención al cliente</span></a>
+    <a routerLink="tu-cesta" routerLinkActive="active"><span>Tu cesta</span></a>
+  </nav>
+
+  <main>
     <router-outlet></router-outlet>
-        
-    <footer>
-        <p>&copy; 2024 Ecommerce. Todos los derechos reservados.</p>
-    </footer>
-    </body>
-</html>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Ecommerce. Todos los derechos reservados.</p>
+  </footer>
+</div>
 

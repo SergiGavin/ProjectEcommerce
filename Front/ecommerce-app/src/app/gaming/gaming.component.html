@@ -1,0 +1,16 @@
+<div class="row">
+    <div *ngFor="let game of gaming" class="col-4">
+        <div class="game-container">
+            <p class="p-game-name">{{ game.product_name }}</p>
+
+            <div class="p-game-image-container">
+                <a [routerLink]="['/detalle-producto', game.id_product]">
+                    <img class="p-game-image" [src]="game.product_image" alt="{{ game.product_name }}">
+                </a>                    
+            </div>
+
+            <p class="p-game-price">{{ game.price }}€</p>
+        </div>
+    </div>
+</div>
+

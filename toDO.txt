@@ -1,0 +1,15 @@
+
+Apartados menú:
+-Más vendidos
+-Atención al cliente
+-Cesta
+
+· Inicio de sesión + Spring Security
+
+· Buscador
+
+·Añadir cesta al iniciar sesión
+
+·Moverse por la pagina con sesión iniciada y cesta.
+
+· Filtro/ordenar

@@ -1,1 +1,16 @@
-<p>ventiladores-cpu works!</p>
+<div class="row">
+    <div *ngFor="let vcpu of ventiladorCPU" class="col-4">
+        <div class="vcpu-container">
+            <p class="p-vcpu-name">{{ vcpu.product_name }}</p>
+
+            <div class="p-vcpu-image-container">
+                <a [routerLink]="['/detalle-producto', vcpu.id_product]">
+                    <img class="p-vcpu-image" [src]="vcpu.product_image" alt="{{ vcpu.product_name }}">
+                </a>
+                                
+            </div>
+
+            <p class="p-vcpu-price">{{ vcpu.price }}€</p>
+        </div>
+    </div>
+</div>
