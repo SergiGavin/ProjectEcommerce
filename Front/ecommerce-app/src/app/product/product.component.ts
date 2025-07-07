@@ -3,18 +3,19 @@ import { Product} from '../model/product.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule, Router } from '@angular/router';
+import { ProductService } from '../services/product.service';
 
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [AsyncPipe, CommonModule, HttpClientModule, RouterModule],
+  imports: [ CommonModule, HttpClientModule, RouterModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
 
-  httpClient = inject(HttpClient);
+  //httpClient = inject(HttpClient);
   product: Product[]=[];
 
   ngOnInit(): void {
@@ -24,7 +25,19 @@ export class ProductComponent implements OnInit {
   //Fetch dependiendo de la ruta.
   fetchProductBasedOnRoute() {
     const rutaActual = this.router.url;
+
     if (rutaActual === '/') {
+      this.productService.getAllProducts().subscribe(product => this.product = product.slice(0, 6));
+    } else if (rutaActual === '/nuevos') {
+      this.productService.getNewProducts().subscribe(product => this.product = product.slice(0, 6));
+    } else if (rutaActual === '/ofertas') {
+      this.productService.getOffers().subscribe(product => this.product = product.slice(0, 6));
+    } else if (rutaActual === '/ventas') {
+      this.productService.getBestSellers().subscribe(product => this.product = product.slice(0, 6));
+    }
+
+  // Todo esto fuera para centralizar los datos en el SERVICE
+    /*if (rutaActual === '/') {
       this.fetchProduct();
     } else if (rutaActual === '/nuevos') {
       this.fetchProductNuevos();
@@ -32,9 +45,9 @@ export class ProductComponent implements OnInit {
       this.fetchProductOfertas();
     } else if(rutaActual === '/ventas'){
       this.fetchProductVentas();
-    }
+    }*/
   }
-
+  /*
   //Para recibir todos los productos.
   fetchProduct(){
     this.httpClient.get('http://localhost:8080/ecommerce/product')
@@ -64,10 +77,10 @@ export class ProductComponent implements OnInit {
       console.log(product);
       this.product = product.slice(0,6);
     });
-  }
+  }*/
   
-
-  constructor(private router: Router) {
+  //Hacemos inyección del router para saber la ruta y el Service para obtener los productos.
+  constructor(private router: Router,private productService: ProductService) {
     this.rutaInicio();
   }
 

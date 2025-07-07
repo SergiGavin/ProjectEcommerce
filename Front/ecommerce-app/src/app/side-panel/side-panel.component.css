@@ -18,9 +18,10 @@
     margin: 1vh 3vw 0vw 1vh;
 }
 .sidePanel a {
-    display: block;
+    display: inline-block;
     margin-bottom: 10px;
     margin-left: 15vw;
+    width: 20%;
 }
 .sidePanel h4 {
     display: block;
@@ -38,6 +39,7 @@ a{
     text-decoration: none;
     color: #ee8484;
 }
+
 .panel_category a:hover {
     color: #ee8484; 
 }
@@ -45,6 +47,9 @@ a{
     background-color: #ee8484;
     color: white;
 }
-
+.sidePanel a:hover {
+    background-color: #ee8484;
+    color: white;
+}
 
     

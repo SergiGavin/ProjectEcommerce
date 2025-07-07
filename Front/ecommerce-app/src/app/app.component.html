@@ -1,7 +1,16 @@
 <div class="app-container">
   <header>
     <img routerLink='' class="logo" src="../assets/logo2.png" alt="logo">
-    <input class="buscador">
+    <div class="buscador-container">
+        <input class="buscador" type="text" placeholder="Buscar productos..." (input)="searchProducts($event)" focus="isFocusedSearch = true" (blur)="onBlur()" #searchInput >
+        <ul class="sugerencias" *ngIf="filteredProducts.length > 0 && isFocusedSearch">
+          <li *ngFor="let product of filteredProducts" (click)="selectProduct(product)">
+            <a class="productSearch" [routerLink]="['/detalle-producto', product.id_product]">{{ product.product_name }}</a>
+          </li>
+        </ul>
+    </div>
+
+    
     <button class="inicio_sesion">Iniciar Sesión</button>
   </header>
 

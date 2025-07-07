@@ -35,6 +35,7 @@ export const routes: Routes = [
         path:'ventas',
         component: ProductComponent
     },
+    /* Fusionada en detalle-producto directamente
     {
         path:'nuevos/detalle-producto/:id_product',
         component: ProductItemComponent
@@ -42,6 +43,11 @@ export const routes: Routes = [
     {
         path:'ofertas/detalle-producto/:id_product',
         component: ProductItemComponent
+    },
+    */
+    { 
+        path: 'detalle-producto/:id_product', 
+        component: ProductItemComponent 
     },
     {
         path:'componentes',

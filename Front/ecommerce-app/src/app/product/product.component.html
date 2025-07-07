@@ -18,7 +18,7 @@
                 <p class="p-product-name">{{ item.product_name }}</p>  
             }
             <div class="p-product-image-container">
-                <a [routerLink]="['detalle-producto', item.id_product]">
+                <a [routerLink]="['/detalle-producto', item.id_product]">
                 <img class="p-product-image" src="{{ item.product_image }}" alt="{{ item.product_name }}">
                 </a>
             </div>
