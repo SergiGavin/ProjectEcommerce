@@ -17,6 +17,8 @@ import { PortatilComponent } from './portatil/portatil.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import { TVComponent } from './tv/tv.component';
 import { GamingComponent } from './gaming/gaming.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     {
@@ -117,6 +119,14 @@ export const routes: Routes = [
         path:'',
         component: ProductComponent
     },
+    {
+        path:'login',
+        component: LoginComponent
+    },
+    {
+        path:'register',
+        component: RegisterComponent
+    }
     
 
 ];

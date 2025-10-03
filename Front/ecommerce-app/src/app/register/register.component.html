@@ -1,0 +1,78 @@
+<div class="login-container">
+    <h2>Registro</h2>
+
+    <form #registerForm="ngForm"> 
+        
+        <div class="form-group">
+            <label for="first_name">Nombre</label>
+            <input 
+                type="text" 
+                id="first_name" 
+                name="first_name" 
+                ngModel
+                placeholder="Introduce tu nombre" 
+                required>
+        </div>
+        <!-- Hay que poner ngModel para que no se envíe como null-->
+        <div class="form-group">
+            <label for="last_name">Apellido</label>
+            <input 
+                type="text" 
+                id="last_name" 
+                name="last_name" 
+                ngModel
+                placeholder="Introduce tu apellido" 
+                required>
+        </div>
+
+
+        <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email"
+            ngModel
+            placeholder="Introduce tu correo" 
+            required>
+        </div>
+
+        <div class="form-group">
+        <label for="username">Usuario</label>
+        <input 
+            type="username" 
+            id="username" 
+            name="username" 
+            ngModel
+            placeholder="Introduce tu usuario" 
+            required>
+        </div>
+        
+        <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            ngModel
+            placeholder="Introduce tu contraseña" 
+            required>
+        </div>
+
+        <div class="form-group">
+        <label for="password_repeat">Repite contraseña</label>
+        <input 
+            type="password" 
+            id="password_repeat" 
+            name="password_repeat" 
+            ngModel
+            placeholder="Introduce tu contraseña otra vez" 
+            required>
+        </div>
+
+        
+        <button type="submit" class="btn-register" (click)="onRegister(registerForm)">Registrate</button>
+    </form>
+</div>
+
+

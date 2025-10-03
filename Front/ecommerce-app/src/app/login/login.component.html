@@ -1,0 +1,38 @@
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+
+    <form #LoginForm="ngForm">
+        
+        <div class="form-group">
+        <label for="username">Usuario</label>
+        <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            ngModel
+            placeholder="Introduce tu usuario" 
+            required>
+        </div>
+
+        
+        <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            ngModel
+            placeholder="Introduce tu contraseña" 
+            required>
+        </div>
+
+        
+        <button type="submit" class="btn-login" (click)="onLogin(LoginForm)">Iniciar Sesión</button>
+    </form>
+
+    <p class="register-link">
+        ¿No tienes cuenta? 
+        <a routerLink="/register">Regístrate aquí</a>
+    </p>
+</div>
+
