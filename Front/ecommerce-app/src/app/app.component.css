@@ -108,7 +108,7 @@ footer {
     max-height: 200px;
     overflow-y: auto;
     z-index: 999;
-    list-style: none; 
+    list-style: none;
 }
 
 .sugerencias li {
@@ -119,7 +119,55 @@ footer {
 .sugerencias li:hover {
     background-color: #f0f0f0;
 }
-.productSearch{
+
+.productSearch {
     text-decoration: none;
     color: black;
+}
+
+.flecha {
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.user_dropdown {
+    background-color: #df9191;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    width: 10vw;
+    height: 5vh;
+    align-content: center; 
+    margin-left: 18vw;
+}
+
+.user_dropdown:hover {
+    background-color: #e0a0a0;
+}
+
+.dropdown_menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #df9191;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 145px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.dropdown_menu li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+    transition: background 0.2s;
+}
+
+.dropdown_menu li a:hover {
+    background-color: #e0a0a0;
 }

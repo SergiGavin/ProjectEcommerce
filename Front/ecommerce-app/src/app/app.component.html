@@ -10,8 +10,28 @@
         </ul>
     </div>
 
-    
+    <div *ngIf="username" class="user_dropdown">
+      <div *ngIf="username" class="user_button" (click)="onUserClick()">
+        {{ username }}
+        <span class="flecha">▼</span>
+      </div>
+      <ul class="dropdown_menu" *ngIf="dropdownOpen">
+        <li><a (click)="goToProfile()">Perfil</a></li>
+        <li><a (click)="logout()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+
+    <button
+      class="inicio_sesion"
+      *ngIf="!username"
+      (click)="onLoginClick()"
+      >Iniciar Sesión
+    </button>
+
+    <!--
     <button class="inicio_sesion" routerLink="/login">Iniciar Sesión</button>
+    -->
+    
   </header>
 
   <nav>
@@ -23,7 +43,7 @@
     <a routerLink="ofertas" routerLinkActive="active"><span>Ofertas</span></a>
     <a routerLink="ventas" routerLinkActive="active"><span>Más vendidos</span></a>
     <a routerLink="atencion-al-cliente" routerLinkActive="active"><span>Atención al cliente</span></a>
-    <a routerLink="tu-cesta" routerLinkActive="active"><span>Tu cesta</span></a>
+    <a routerLink="cesta" routerLinkActive="active"><span>Tu cesta</span></a>
   </nav>
 
   <main>

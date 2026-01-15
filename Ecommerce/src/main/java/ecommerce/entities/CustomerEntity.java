@@ -30,11 +30,11 @@ public class CustomerEntity {
 	private String last_name;
 	private String identify_document;
 	private String email;
-	private int phone;
+	private Integer phone;
 	private String address;
 	private String city;
 	private String province;
-	private int zip_code;
+	private Integer zip_code;
 	private String country;
 	private Date registration_date;
 	private String payment_info;

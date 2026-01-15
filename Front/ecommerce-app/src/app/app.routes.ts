@@ -19,6 +19,8 @@ import { TVComponent } from './tv/tv.component';
 import { GamingComponent } from './gaming/gaming.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { CestaComponent } from './cesta/cesta.component';
 
 export const routes: Routes = [
     {
@@ -37,16 +39,6 @@ export const routes: Routes = [
         path:'ventas',
         component: ProductComponent
     },
-    /* Fusionada en detalle-producto directamente
-    {
-        path:'nuevos/detalle-producto/:id_product',
-        component: ProductItemComponent
-    },
-    {
-        path:'ofertas/detalle-producto/:id_product',
-        component: ProductItemComponent
-    },
-    */
     { 
         path: 'detalle-producto/:id_product', 
         component: ProductItemComponent 
@@ -126,6 +118,14 @@ export const routes: Routes = [
     {
         path:'register',
         component: RegisterComponent
+    },
+    {
+        path:'perfil',
+        component: PerfilComponent
+    },
+    {
+        path:'cesta',
+        component: CestaComponent
     }
     
 

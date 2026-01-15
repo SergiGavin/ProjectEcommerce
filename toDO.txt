@@ -1,15 +1,21 @@
 
 Apartados menú:
--Más vendidos
--Atención al cliente
+-Atención al cliente(o "sobre nosotros"?). Ideas de que poner:
+
+	· Mapa de google maps
+	· Nº de telefono, mail?
+	· fumada? un chat que responda IA?¿? Como funcionara eso?
+
+
+
 -Cesta
+-Perfil
+- Pedidos --> meter una lista de los pedidos.
 
-· Inicio de sesión + Spring Security
+· Moverse por la pagina con los productos guardados de la cesta --> Ir añadiendo en un arrayList los productos(en el service?)
+· Añadir cesta
+· Procedimiento de pago? Hacer ventanita con datos de tarjeta y luego una pantalla con la info de ese pedido.  
 
-· Buscador
 
-·Añadir cesta al iniciar sesión
 
-·Moverse por la pagina con sesión iniciada y cesta.
 
-· Filtro/ordenar

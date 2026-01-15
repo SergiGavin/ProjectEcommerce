@@ -20,19 +20,19 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id_customer` BIGINT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
-  `identify_document` VARCHAR(15) NOT NULL UNIQUE,
+  `identify_document` VARCHAR(15),
   `email` VARCHAR(45) NOT NULL,
-  `phone` INT(15) NOT NULL,
-  `address` VARCHAR(65) NOT NULL,
-  `city` VARCHAR(45) NOT NULL,
-  `province` VARCHAR(45) NOT NULL,
-  `zip_code` INT NOT NULL,
-  `country` VARCHAR(45) NOT NULL,
+  `phone` INT(15),
+  `address` VARCHAR(65),
+  `city` VARCHAR(45),
+  `province` VARCHAR(45),
+  `zip_code` INT,
+  `country` VARCHAR(45),
   `registration_date` DATE NOT NULL,
-  `payment_info` VARCHAR(45) NOT NULL,
-  `account_status` VARCHAR(20) NOT NULL,
+  `payment_info` VARCHAR(45),
+  `account_status` VARCHAR(20),
   `username` VARCHAR(45) NOT NULL UNIQUE,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_customer`))
 ENGINE = InnoDB;
 
@@ -190,7 +190,7 @@ VALUES
 -- Insertar datos de ejemplo en la tabla Product
 INSERT INTO product (id_product, product_name, description, price, stock_quantity, category, creation_date, update_date, discount, taxes, product_image, availability, technical_specifications, sales,supplier_id_supplier)
 VALUES
-(1, 'NVIDIA GeForce RTX 4090', 'La NVIDIA® GeForce RTX™ 4090 es la GPU GeForce definitiva. Ofrece un enorme salto en rendimiento, eficiencia y gráficos impulsados por IA con DLSS 3. Experimente juegos de rendimiento ultraalto, mundos virtuales increíblemente detallados con trazado de rayos, productividad sin precedentes y nuevas formas de crear. Está impulsado por la arquitectura NVIDIA Ada Lovelace y viene con 24 GB de memoria G6X para brindar la mejor experiencia a jugadores y creadores.', 1899.99, 100, 'Tarjeta_grafica', '2023-01-01', NULL, 0.10, 0.21, 'https://img.pccomponentes.com/articles/1079/10792156/1155-msi-geforce-rtx-4090-gaming-x-slim-24gb-gddr6x-dlss3.jpg', TRUE, 'Unidad de procesamiento de gráficos NVIDIA® GeForce RTX™ 4090
+(1, 'NVIDIA GeForce RTX 4090', 'La NVIDIA® GeForce RTX™ 4090 es la GPU GeForce definitiva. Ofrece un enorme salto en rendimiento, eficiencia y gráficos impulsados por IA con DLSS 3. Experimente juegos de rendimiento ultraalto, mundos virtuales increíblemente detallados con trazado de rayos, productividad sin precedentes y nuevas formas de crear. Está impulsado por la arquitectura NVIDIA Ada Lovelace y viene con 24 GB de memoria G6X para brindar la mejor experiencia a jugadores y creadores.', 1899.99, 100, 'Tarjeta_grafica', '2023-01-01', NULL, 0.10, 0.21, 'https://m.media-amazon.com/images/I/71BdePK7bWL.jpg', TRUE, 'Unidad de procesamiento de gráficos NVIDIA® GeForce RTX™ 4090
 Interfaz PCI Express® Gen 4
 Relojes centrales
 Rendimiento extremo: 2610 MHz (MSI Centro)
@@ -356,7 +356,7 @@ Estabilización automática de imagen
 Modo ráfaga
 Geoetiquetado de fotos
 Captura de imagen en formato HEIF y JPEG', 55,2),
-(6,'Nintendo Switch Edición Mario OLED Roja','Nintendo Switch (modelo OLED) incluye una pantalla de 7 pulgadas con un marco más fino. Los colores intensos y el alto contraste de la pantalla proporcionan una experiencia de juego portátil y de sobremesa enriquecedora, y aportan mucha vida a los juegos, tanto si compites a gran velocidad sobre el asfalto como si te ves las caras con enemigos temibles.',349.99, 50, 'Gaming','2024-01-08', null, 0.02, 0.21,'https://img.pccomponentes.com/articles/1077/10770738/1229-nintendo-switch-edicion-mario-oled-roja.jpg',FALSE,
+(6,'Nintendo Switch','Nintendo Switch  incluye una pantalla de 7 pulgadas con un marco más fino. Los colores intensos y el alto contraste de la pantalla proporcionan una experiencia de juego portátil y de sobremesa enriquecedora, y aportan mucha vida a los juegos, tanto si compites a gran velocidad sobre el asfalto como si te ves las caras con enemigos temibles.',349.99, 50, 'Gaming','2024-01-08', null, 0.02, 0.21,'https://m.media-amazon.com/images/I/81IQp9uUdRL.jpg',FALSE,
 'Desempeño
 Plataforma: Nintendo Switch
 Modelo del procesador: NVIDIA Custom Tegra
@@ -494,7 +494,7 @@ Ancho : 67 mm
 Profundidad : 120 mm
 Altura : 42 mm
 Peso del ratón : 87 g', 95,2),
-(10,'AMD Ryzen 7 7800X3D 4.2 GHz/5 GHz','El procesador para juegos que domina el mundo de la mano de la tecnología AMD 3D V-Cache™, para ganar aún más rendimiento de juego. Sin importar la configuración ni la resolución que uses, lleva a tu equipo a la victoria con este maravilloso procesador para juegos. Disfruta, además, las ventajas de AMD 3D V-Cache™, la tecnología de punta que es sinónimo de latencia baja y mucho rendimiento de juego.',389.95, 70,'Procesador','2023-07-30',null,0.09,0.21,'https://img.pccomponentes.com/articles/1066/10665103/1575-amd-ryzen-7-7800x3d-42-ghz-5-ghz.jpg', true,'Procesador
+(10,'AMD Ryzen 7 7800X3D 4.2 GHz/5 GHz','El procesador para juegos que domina el mundo de la mano de la tecnología AMD 3D V-Cache™, para ganar aún más rendimiento de juego. Sin importar la configuración ni la resolución que uses, lleva a tu equipo a la victoria con este maravilloso procesador para juegos. Disfruta, además, las ventajas de AMD 3D V-Cache™, la tecnología de punta que es sinónimo de latencia baja y mucho rendimiento de juego.',389.95, 70,'Procesador','2023-07-30',null,0.09,0.21,'https://thumb.pccomponentes.com/w-530-530/articles/1066/10665103/1500-amd-ryzen-7-7800x3d-42-ghz-5-ghz-caracteristicas.jpg', true,'Procesador
 Fabricante de procesador: AMD
 Modelo del procesador: 7800X3D
 Frecuencia base del procesador: 4,2 GHz

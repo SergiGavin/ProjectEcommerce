@@ -19,8 +19,9 @@
         @if (showTechDetails) {
             <pre class="p-item-tech">{{ product.technical_specifications }}</pre>
         }
-        
+        <button class="cesta" (click)="addToBasket()">Añadir a la cesta</button>
     </div>
+    
 }@else if (!product) {
     <p>El producto no existe. Para más información contacte con el soporte.</p>
 }

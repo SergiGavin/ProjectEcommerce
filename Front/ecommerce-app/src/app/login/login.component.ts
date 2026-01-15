@@ -24,6 +24,11 @@ export class LoginComponent {
       }).subscribe({
       next: res => {
         console.log('Login exitoso', res);
+
+        localStorage.setItem('user', JSON.stringify(res));// Guardamos el nombre en localStorage convirtiendo el "object" a "string".
+
+        this.customerService.setUser(res); // Actualizamos el estado del usuario en el servicio
+
         this.router.navigate(['/']); // redirigir a página principal
       },
       error: err => {

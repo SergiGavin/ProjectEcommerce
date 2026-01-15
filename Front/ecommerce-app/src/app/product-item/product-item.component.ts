@@ -4,6 +4,8 @@ import { Product } from '../model/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { CommonModule } from '@angular/common';
+import { BasketService } from '../services/basket.service';
+
 
 @Component({
   selector: 'app-product-item',
@@ -19,7 +21,7 @@ export class ProductItemComponent {
   showTechDetails: boolean = false;
   flecha: string = '⬇';
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService, private basketService: BasketService) {}
   
   ngOnInit(): void {
   this.route.paramMap.subscribe(params => { //Reacciona cada vez que se cambia el parametro de la ruta.
@@ -45,5 +47,10 @@ export class ProductItemComponent {
       this.flecha ='⬇';
     }
   }
+  addToBasket(){
+    this.basketService.addToBasket(this.product);
+    console.log("Producto añadido:", this.product);
+    
 
+  }
 }

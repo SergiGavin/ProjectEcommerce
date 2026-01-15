@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -73,5 +76,26 @@ public class CustomerController {
 		    System.out.println("El array tiene: "+orderIds);
 		    return orderIds;
 		}
+		
+		//Registro
+		 @PostMapping("/register")
+		 public ResponseEntity<CustomerEntity> registerCustomer(@RequestBody CustomerEntity customer){
+			 CustomerEntity savedCustomer = customerService.registerCustomer(customer);
+			 return ResponseEntity.ok(savedCustomer);
+		 }
+		 
+		 //Login
+		 @PostMapping("/login")
+		 public ResponseEntity<CustomerEntity> login(@RequestBody CustomerEntity credentials) {
+		        CustomerEntity customer = customerService.login(credentials.getUsername(), credentials.getPassword());
+		        if (customer != null) {
+		            return ResponseEntity.ok(customer);
+		        } else {
+		            return ResponseEntity.status(401).body(null);
+		        }
+		    }
+		
+		
+		
 	}
 
